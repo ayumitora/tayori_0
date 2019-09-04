@@ -4,8 +4,14 @@ html
     title
       | Tayori0
     = csrf_meta_tags
+    meta name="viewport" content="width=device-width"
+    / ↑diverより
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    .app-title.navber-expend-md.navber-light.bg-light
+      .navber-brand tayori
+    .container
+    /実践ガイドより
     = yield
