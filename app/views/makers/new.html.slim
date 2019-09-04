@@ -1,2 +1,18 @@
-h1 Makers#new
-p Find me in app/views/makers/new.html.slim
+h1 メーカー新規登録
+= link_to 'メーカーの一覧へ', makers_path
+
+= form_with model: @maker, local: true do |f|
+  .form-group
+    =f.label :name
+    =f.text_field :name
+  .form-group
+    =f.label :mail
+    =f.text_field :mail
+  .form-group
+    = f.label :password
+    = f.password_field :password
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  =f.submit
+

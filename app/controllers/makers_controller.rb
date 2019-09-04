@@ -6,6 +6,7 @@ class MakersController < ApplicationController
   end
 
   def new
+    @maker = Maker.new
   end
 
   def edit
