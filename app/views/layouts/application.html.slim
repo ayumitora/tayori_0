@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | Tayori0
+      | Tayori
     = csrf_meta_tags
     meta name="viewport" content="width=device-width"
     / ↑diverより
@@ -10,8 +10,10 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .app-title.navber-expend-md.navber-light.bg-light
+    .app-title.navber.navber-expand-md.navber-light.bg-light
       .navber-brand tayori
     .container
-    /実践ガイドより
-    = yield
+      - if flash.notice.present?
+        .alert.alert-succsess= flash.notice
+
+      = yield
