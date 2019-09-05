@@ -1,2 +1,15 @@
 h1 メーカーの一覧
 =link_to 'メーカー新規登録', new_maker_path,class: 'btn btn-outline-info btn-block'
+
+.mb-3
+table.table.table-hover
+  thead.thead-defolt
+    tr
+      th= Maker.human_attribute_name(:name)
+      th= Maker.human_attribute_name(:created_at)
+  tbody
+  - @makers.each do |maker|
+    tr
+      td= link_to maker.name, maker
+      td= maker.created_at
+  end

@@ -1,2 +1,15 @@
-h1 Makers#show
-p Find me in app/views/makers/show.html.slim
+h1 メーカー詳細
+.nav.justify-content-end
+  =link_to 'メーカーの一覧へ', makers_path, class: 'nav-link'
+
+table.table.table-hover
+  tbody
+    tr
+      th= Maker.human_attribute_name(:id)
+      td= @maker.id
+    tr
+      th= Maker.human_attribute_name(:name)
+      td= @maker.name
+    tr
+      th= Maker.human_attribute_name(:created_at)
+      td= @maker.created_at
