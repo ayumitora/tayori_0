@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  maker: one
+  name: MyString
+  price: 1
+  image: MyString
+  season: MyString
+
+two:
+  maker: two
+  name: MyString
+  price: 1
+  image: MyString
+  season: MyString
