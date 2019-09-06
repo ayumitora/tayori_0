@@ -1,2 +1,15 @@
-h1 Products#index
-p Find me in app/views/products/index.html.slim
+h1 プロダクト一覧
+=link_to 'プロダクト新規登録', new_product_path,class: 'btn btn-outline-info btn-block'
+
+.mb-3
+table.table.table-hover
+  thead.thead-defolt
+    tr
+      th= @products.human_attribute_name(:name)
+      th= @products.human_attribute_name(:created_at)
+  tbody
+  - @products.each do |product|
+    tr
+      td= link_to product.name, product
+      td= product.created_at
+  end

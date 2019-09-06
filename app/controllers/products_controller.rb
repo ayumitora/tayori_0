@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @products = Product.find(params[:id])
+    # @products = Product.find(params[:id])
   end
 
   def new
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     puroduct.save!
-    redirect_to productsurl, notice: "プロダクト「#{product.name}を登録しました。」"
+    redirect_to products_url, notice: "プロダクト「#{product.name}を登録しました。」"
   end
 
   def edit

@@ -15,39 +15,13 @@ ActiveRecord::Schema.define(version: 2019_09_06_063611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "makers", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "site_url"
-    t.text "overview"
-    t.string "logo"
-    t.string "image"
-    t.string "ivent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.index ["email"], name: "index_makers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_makers_on_reset_password_token", unique: true
-  end
-
   create_table "products", force: :cascade do |t|
-    t.bigint "maker_id"
     t.string "name", null: false
     t.integer "price"
     t.string "image"
     t.string "season"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["maker_id"], name: "index_products_on_maker_id"
   end
 
-  add_foreign_key "products", "makers"
 end
