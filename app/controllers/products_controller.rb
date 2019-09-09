@@ -26,6 +26,14 @@ class ProductsController < ApplicationController
     product.update!(product_params)
     redirect_to products_url, notice: "プロダクト「#{product.name}」を更新しました。"
   end
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to products_url, notice: "プロダクト「#{product.name}」を削除しました。"
+  end
+
+
   private
 
   def product_params
