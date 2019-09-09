@@ -8,12 +8,12 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @products = Product.new
+    @product = Product.new
   end
 
   def create
     product = Product.new(product_params)
-    puroduct.save!
+    product.save!
     redirect_to products_url, notice: "プロダクト「#{product.name}を登録しました。」"
   end
 

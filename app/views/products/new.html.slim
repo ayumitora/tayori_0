@@ -1,18 +1,18 @@
 h1 プロダクト新規登録
 = link_to 'プロダクトの一覧へ', products_path
 
-form
+
 = form_with model: @product, local: true do |f|
   .form-group
-    =f.label :name
-    =f.text_field :name, class: 'form-control'
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'product_name'
   .form-group
-    =f.label :price
-    =f.text_field :price, class: 'form-control'
+    = f.label :price
+    = f.text_field :price, class: 'form-control', id: 'product_plice'
   .form-group
     = f.label :image
-    = f.text_field :image, class: 'form-control'
+    = f.text_field :image, class: 'form-control', id: 'product_image'
   .form-group
     = f.label :season
-    = f.text_field :season, class: 'form-control'
+    = f.text_field :season, class: 'form-control', id: 'product_season'
   =f.submit nil, class: 'btn btn-outline-info btn-block'
