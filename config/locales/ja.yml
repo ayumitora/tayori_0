@@ -12,16 +12,16 @@ ja:
       product: プロダクト
     attributes:
       product:
-        id: ID
-        name: 名称
+        id: プロダクトID
+        name: プロダクト名
         price: 参考価格
         image: 画像
         season: 販売時期
         created_at: 登録日時
         updated_at: 更新日時
       maker:
-        id: ID
-        name: 名称
+        id: メーカーID
+        name: メーカー名
         overview: 概要
         mail: メールアドレス
         password: パスワード
