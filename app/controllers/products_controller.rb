@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_maker!
+
   def index
     @products = Product.all
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def new
@@ -18,19 +20,16 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update!(product_params)
-    redirect_to products_url, notice: "プロダクト「#{product.name}」を更新しました。"
+    @product.update!(product_params)
+    redirect_to products_url, notice: "プロダクト「#{@product.name}」を更新しました。"
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
-    redirect_to products_url, notice: "プロダクト「#{product.name}」を削除しました。"
+    @product.destroy
+    redirect_to products_url, notice: "プロダクト「#{@product.name}」を削除しました。"
   end
 
 
@@ -38,5 +37,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :image, :season)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
