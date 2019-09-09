@@ -1,2 +1,19 @@
-h1 Products#edit
-p Find me in app/views/products/edit.html.slim
+h1 プロダクトの編集
+
+.nav.justify-content-end
+  = link_to 'プロダクトの一覧へ', products_path
+
+= form_with model: @product, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'product_name'
+  .form-group
+    = f.label :price
+    = f.text_field :price, class: 'form-control', id: 'product_plice'
+  .form-group
+    = f.label :image
+    = f.text_field :image, class: 'form-control', id: 'product_image'
+  .form-group
+    = f.label :season
+    = f.text_field :season, class: 'form-control', id: 'product_season'
+  =f.submit nil, class: 'btn btn-outline-info btn-block'

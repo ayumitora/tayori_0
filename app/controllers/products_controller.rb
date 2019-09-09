@@ -14,13 +14,18 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save!
-    redirect_to products_url, notice: "プロダクト「#{product.name}を登録しました。」"
+    redirect_to products_url, notice: "プロダクト「#{product.name}」を登録しました。"
   end
 
   def edit
-
+    @product = Product.find(params[:id])
   end
 
+  def update
+    product = Product.find(params[:id])
+    product.update!(product_params)
+    redirect_to products_url, notice: "プロダクト「#{product.name}」を更新しました。"
+  end
   private
 
   def product_params
