@@ -12,7 +12,7 @@ table.table.table-hover
       td= @product.name
     tr
       th= Product.human_attribute_name(:price)
-      td= simple_format(h(@product.price), {}, sanitize: false, wrapper_tag: "div")
+      td= @product.price
     tr
       th= Product.human_attribute_name(:created_at)
       td= @product.created_at
@@ -22,3 +22,6 @@ table.table.table-hover
 
 = link_to '編集', edit_product_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @product, method: :delete, data: { confirm: "プロダクト「#{@product.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+
+/ 改行があるばあい、      td= simple_format(h(@product.price), {}, sanitize: false, wrapper_tag: "div")
+  のように書くこと
