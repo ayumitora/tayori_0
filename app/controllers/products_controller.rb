@@ -14,9 +14,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save!
-    redirect_to products_url, notice: "プロダクト「#{product.name}」を登録しました。"
+    @product = Product.new(product_params)
+    @product.maker_id = current_maker.id
+    @product.save!
+    redirect_to products_url, notice: "プロダクト「#{@product.name}」を登録しました。"
   end
 
   def edit
