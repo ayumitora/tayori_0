@@ -1,6 +1,7 @@
 h1 プロダクト新規登録
-= link_to 'プロダクトの一覧へ', products_path
 
+.nav.justify-content-end
+  = link_to 'プロダクトの一覧へ', products_path
 
 = form_with model: @product, local: true do |f|
   .form-group

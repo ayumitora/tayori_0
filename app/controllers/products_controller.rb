@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # @products = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def new
@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+
   end
 
   private
