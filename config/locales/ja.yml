@@ -25,6 +25,9 @@ ja:
         overview: 概要
         mail: メールアドレス
         password: パスワード
+        current_password: 現在のパスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
         site_url: ウェブサイト
         logo: ロゴ画像
         image: トップ画像
