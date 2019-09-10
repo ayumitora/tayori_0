@@ -20,8 +20,8 @@ table.table.table-hover
       th= Product.human_attribute_name(:updated_at)
       td= @product.updated_at
     tr
-      th= Maker.human_attribute_name(:id)
-      td= @product.maker.id
+      th= Maker.human_attribute_name(:name)
+      td= @product.maker.name
 = link_to '編集', edit_product_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @product, method: :delete, data: { confirm: "プロダクト「#{@product.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
