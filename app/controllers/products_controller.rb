@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_maker!
 
   def index
-    @products = Product.all
+    @products = current_maker.products
   end
 
   def show
