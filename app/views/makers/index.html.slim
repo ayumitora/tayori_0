@@ -1,0 +1,18 @@
+h1 メーカー一覧
+
+.mb-3
+table.table.table-hover
+  thead.thead-defolt
+    tr
+      th= @makers.human_attribute_name(:name)
+      th= @makers.human_attribute_name(:created_at)
+      th
+  tbody
+  - @makers.each do |maker|
+    tr
+      td= link_to maker.name, maker
+      td= maker.created_at
+      td
+        = link_to '編集', edit_maker_path(maker), class: 'btn btn-primary mr-3'
+        = link_to '削除', maker, method: :delete, data: { confirm: "メーカー「#{maker.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+  end

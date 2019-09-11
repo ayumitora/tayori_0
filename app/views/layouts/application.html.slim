@@ -13,7 +13,7 @@ html
     .app-title.navber.navber-expand-md.navber-light.bg-light
       .navber-brand TAYORI
       - if maker_signed_in?
-        li = link_to "メーカーをログアウト", destroy_maker_session_path, method: :delete
+        li = link_to "メーカー「#{current_maker.name}」をログアウト", destroy_maker_session_path, method: :delete
       - else
         li = link_to 'メーカーログイン', new_maker_session_path
         li = link_to 'メーカーサインアップ', new_maker_registration_path

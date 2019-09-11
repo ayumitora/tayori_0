@@ -1,6 +1,6 @@
-h1 プロダクトの編集
+h2 『#{@product.name}』の詳細を編集
 
 .nav.justify-content-end
-  = link_to 'プロダクトの一覧へ', products_path
+  = link_to "#{current_maker.name} のプロダクト一覧へ", products_path
 
 = render partial: 'form', locals: {product: @product}
