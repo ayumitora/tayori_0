@@ -5,4 +5,8 @@ class Maker < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products
+
+    mount_uploader :image, MakerImageUploader
+    mount_uploader :logo, MakerLogoUploader
+
 end

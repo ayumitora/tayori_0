@@ -12,13 +12,13 @@ h1 メーカーの編集
     = f.text_field :site_url, class: 'form-control', id: 'maker_site_url'
   .form-group
     = f.label :overview
-    = f.text_field :overview, class: 'form-control', id: 'maker_overview'
+    = f.text_area :overview, class: 'form-control', id: 'maker_overview'
   .form-group
     = f.label :logo
-    = f.text_field :logo, class: 'form-control', id: 'maker_logo'
+    = f.file_field :logo, class: 'form-control', id: 'maker_logo'
   .form-group
     = f.label :image
-    = f.text_field :image, class: 'form-control', id: 'maker_image'
+    = f.file_field :image, class: 'form-control', id: 'maker_image'
   .form-group
     = f.label :ivent
     = f.text_field :ivent, class: 'form-control', id: 'maker_ivent'

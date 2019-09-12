@@ -15,13 +15,14 @@ table.table.table-hover
       td= @maker.site_url
     tr
       th= Maker.human_attribute_name(:overview)
-      td= @maker.overview
+      td= simple_format(h(@maker.overview), {}, sanitize: false, wrapper_tag: "div")
+      / td= @maker.overview
     tr
       th= Maker.human_attribute_name(:logo)
-      td= @maker.logo
+      td= image_tag @maker.logo.url
     tr
       th= Maker.human_attribute_name(:image)
-      td= @maker.image
+      td= image_tag @maker.image.url
     tr
       th= Maker.human_attribute_name(:ivent)
       td= @maker.ivent
