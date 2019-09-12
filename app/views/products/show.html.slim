@@ -14,11 +14,11 @@ table.table.table-hover
       th= Product.human_attribute_name(:price)
       td= @product.price
     tr
-      th= Product.human_attribute_name(:created_at)
-      td= @product.created_at
+      th= Product.human_attribute_name(:image)
+      td= image_tag @product.image.url
     tr
-      th= Product.human_attribute_name(:updated_at)
-      td= @product.updated_at
+      th= Product.human_attribute_name(:season)
+      td= @product.season
     tr
       th= Maker.human_attribute_name(:name)
       td= @product.maker.name
