@@ -30,7 +30,7 @@ class MakersController < ApplicationController
 
   def maker_params
     params.require(:maker).permit(
-      :name, :site_url, :overview, :logo, :image, :ivent
+      :name, :site_url, :overview, :logo, :logo_cache, :image, :image_cache, :ivent
     )
   end
 
