@@ -12,13 +12,12 @@ class Maker < ApplicationRecord
     format: /\A#{URI::regexp(%w(http https))}\z/
   validates :overview,
     presence: true,
-    length: { minimum: 1, maximum: 1000 }
-    on: :update ##updateメソッドのみ有効
-
+    length: { minimum: 1, maximum: 1000 },
+    on: :update
 
   has_many :products
 
-    mount_uploader :image, MakerImageUploader
-    mount_uploader :logo, MakerLogoUploader
+  mount_uploader :image, MakerImageUploader
+  mount_uploader :logo, MakerLogoUploader
 
 end
