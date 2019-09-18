@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_maker!
 
   def index
-    @products = current_maker.products
+    # @products = current_maker.products
+    @products = Product.all
   end
 
   def show
@@ -32,7 +33,6 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_url, notice: "プロダクト「#{@product.name}」を削除しました。"
   end
-
 
   private
 

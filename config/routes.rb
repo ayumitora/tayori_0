@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
-  get 'evaluates/index'
-  get 'evaluates/show'
-  get 'evaluates/new'
-  get 'evaluates/edit'
   devise_for :customers
-  # get 'makers/index'
-  # get 'makers/show'
-  # get 'makers/new'
-  # get 'makers/edit'
   devise_for :makers, controllers: {
     sessions: 'makers/sessions'
   }
