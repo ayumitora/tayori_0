@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Maker.create(
+  name: "ぺーどろりーの",
+  email: "hinoayumi@gmail.com",
+  password: "tokitoki",
+  site_url: "https://peedrolino.official.ec",
+  overview: "踊りだしたい着心地で、身体と眺めの双方善くなる福の販売",
+  logo: open("#{Rails.root}/db/seed_fixtures/peedlo_logo.jpg"),
+  image: open("#{Rails.root}/db/seed_fixtures/54-280x280.jpg"),
+  ivent: "ただいま、お便りアプリを作成中です"
+)
