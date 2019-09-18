@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  maker_id: 1
+  rate: 1.5
+  image: MyString
+  content: MyText
+  comment: MyText
+
+two:
+  product_id: 1
+  maker_id: 1
+  rate: 1.5
+  image: MyString
+  content: MyText
+  comment: MyText

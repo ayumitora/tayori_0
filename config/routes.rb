@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'evaluates/index'
+  get 'evaluates/show'
+  get 'evaluates/new'
+  get 'evaluates/edit'
   devise_for :customers
   # get 'makers/index'
   # get 'makers/show'
@@ -7,7 +11,7 @@ Rails.application.routes.draw do
   devise_for :makers, controllers: {
     sessions: 'makers/sessions'
   }
-
+  resources :evaluates
   resources :products
   resources :makers
   root to: 'products#index'
