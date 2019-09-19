@@ -1,6 +1,6 @@
 class MakersController < ApplicationController
   before_action :set_maker, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_maker!, except: :index
+  before_action :authenticate_maker!, except: [:index, :show]
 
   def index
     @makers = Maker.all

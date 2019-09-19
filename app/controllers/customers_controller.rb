@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(
-      :name, :site_url, :overview, :logo, :logo_cache, :image, :image_cache, :ivent
+      :display_name, :full_name, :icon, :icon_cache, :residence
     )
   end
 

@@ -1,7 +1,7 @@
 h2 プロダクト『#{@maker.name}』 の詳細
 
 .nav.justify-content-end
-  = link_to   = link_to "#{current_maker.name} のプロダクト一覧へ", products_path
+  = link_to   = link_to "#{@maker.name} のプロダクト一覧へ", products_path
 table.table.table-hover
   tbody
     tr
@@ -26,7 +26,7 @@ table.table.table-hover
     tr
       th= Maker.human_attribute_name(:ivent)
       td= @maker.ivent
-= link_to '編集', edit_maker_path(id: current_maker.id), class: 'btn btn-primary mr-3'
+= link_to '編集', edit_maker_path(id: @maker.id), class: 'btn btn-primary mr-3'
 = link_to '削除', @maker, method: :delete, data: { confirm: "メーカー「#{@maker.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
 / 改行があるばあい、      td= simple_format(h(@maker.price), {}, sanitize: false, wrapper_tag: "div")
