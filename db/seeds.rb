@@ -15,3 +15,11 @@ Maker.create(
   image: open("#{Rails.root}/db/seed_fixtures/54-280x280.jpg"),
   ivent: "ただいま、お便りアプリを作成中です"
 )
+
+Product.create(
+  maker_id: 1,
+  name: "宝ぶくろ",
+  price: 7000,
+  image: open("#{Rails.root}/db/seed_fixtures/54-280x280.jpg"),
+  season: "20017年ごろ"
+)
