@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_014822) do
   end
 
   create_table "evaluates", force: :cascade do |t|
-    t.integer "product_id"
+    t.integer "product_id", null: false
     t.integer "customer_id"
     t.float "rate"
     t.string "image"
