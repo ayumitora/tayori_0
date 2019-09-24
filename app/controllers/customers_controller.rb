@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:edit, :update, :destroy]
   before_action :authenticate_customer!, except: :index
 
   def index
@@ -7,10 +7,9 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @customer = current_customer
   end
 
-  # def new
-  # end
 
   def edit
   end
@@ -20,10 +19,10 @@ class CustomersController < ApplicationController
     redirect_to action: :show, notice: "カスタマー「#{@customer.name}」を更新しました。"
   end
 
-  def destroy
-    @customer.destroy
-    redirect_to customers_url, notice: "カスタマー「#{@customer.name}」を削除しました。"
-  end
+  # def destroy
+  #   @customer.destroy
+  #   redirect_to customers_url, notice: "カスタマー「#{@customer.name}」を削除しました。"
+  # end
 
 
   private
@@ -35,6 +34,6 @@ class CustomersController < ApplicationController
   end
 
   def set_customer
-    @customer = customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 end

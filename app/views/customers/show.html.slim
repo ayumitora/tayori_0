@@ -1,2 +1,28 @@
-h1 Customers#show
-p Find me in app/views/customers/show.html.slim
+h2 『#{@customer.full_name}』 の登録情報
+
+.nav.justify-content-end
+  = link_to "#{@customer.display_name} の評価プロダクト一覧へ", evaluates_path
+table.table.table-hover
+  tbody
+    tr
+      th= Customer.human_attribute_name(:id)
+      td= @customer.id
+    tr
+      th= Customer.human_attribute_name(:full_name)
+      td= @customer.full_name
+    tr
+      th= Customer.human_attribute_name(:display_name)
+      td= @customer.display_name
+    tr
+      th= Customer.human_attribute_name(:icon)
+      td= image_tag @customer.icon.url
+    tr
+      th= Customer.human_attribute_name(:score)
+      td= @customer.score
+    tr
+      th= Customer.human_attribute_name(:residence)
+      td= @customer.residence
+= link_to '編集', customers_edit_path(id: @customer.id), class: 'btn btn-primary mr-3'
+
+/ 改行があるばあい、      td= simple_format(h(@customer.price), {}, sanitize: false, wrapper_tag: "div")
+  のように書くこと

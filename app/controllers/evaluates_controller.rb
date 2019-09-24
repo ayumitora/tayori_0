@@ -31,6 +31,8 @@ class EvaluatesController < ApplicationController
     @evaluate.destroy
     redirect_to @evaluates_url, notice: "プロダクト「#{@evaluate.product.name}」を削除しました。"
   end
+  
+  
   private
   def evaluate_params
     params.require(:evaluate).permit(:product_id, :customer_id, :rate, :image, :image_cache, :content, :comment)

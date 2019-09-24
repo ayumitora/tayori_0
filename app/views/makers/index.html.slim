@@ -15,4 +15,6 @@ table.table.table-hover
       td
         = link_to '編集', edit_maker_path(maker), class: 'btn btn-primary mr-3'
         = link_to '削除', maker, method: :delete, data: { confirm: "メーカー「#{maker.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+        = link_to '詳細', maker_path(maker), class: 'btn btn-primary mr-3'
+
   end
