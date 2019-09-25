@@ -4,20 +4,20 @@ p Find me in app/views/home/index.html.slim
 = link_to '評価', new_evaluate_path, class: 'btn btn-primary mr-3'
 
 
-h1 どの作り手の作品を評価しますか？
+/ h1 どの作り手の作品を評価しますか？
 
-.mb-3
-table.table.table-hover
-  thead.thead-defolt
-    tr
-      th= @makers.human_attribute_name(:name)
-      th= @makers.human_attribute_name(:overview)
-      th
-  tbody
-  - @makers.each do |maker|
-    tr
-      td= link_to maker.name, maker
-      td= maker.overview
-      td
-        = link_to 'プロダクト一覧へ', home_show_path(maker_id: maker.id), class: 'btn btn-primary mr-3'
-  end
+/ .mb-3
+/ table.table.table-hover
+/   thead.thead-defolt
+/     tr
+/       th= @makers.human_attribute_name(:name)
+/       th= @makers.human_attribute_name(:overview)
+/       th
+/   tbody
+/   - @makers.each do |maker|
+/     tr
+/       td= link_to maker.name, maker
+/       td= maker.overview
+/       td
+/         = link_to 'プロダクト一覧へ', home_show_path(maker_id: maker.id), class: 'btn btn-primary mr-3'
+/   end

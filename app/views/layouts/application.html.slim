@@ -27,6 +27,7 @@ html
         li = link_to 'カスタマーサインアップ', new_customer_registration_path
 
     .container
+      = link_to '戻る', 'javascript:history.back()'
       - if flash.notice.present?
         .alert.alert-succsess= flash.notice
           /  <p class="notice"><%= notice %></p>

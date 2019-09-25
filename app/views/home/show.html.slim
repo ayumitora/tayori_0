@@ -1,21 +1,21 @@
 h1 Home#show
 p Find me in app/views/home/show.html.slim
-h2  この作り手のプロダクト一覧
-.mb-3
-table.table.table-hover
-  thead.thead-defolt
-    tr
-      th= @products.human_attribute_name(:name)
-      th= @products.human_attribute_name(:created_at)
-      th
-  tbody
-  - @products.each do |product|
-    tr
-      td= link_to product.name, product
-      td= product.created_at
-      td
-        = link_to '評価', new_evaluate_path, class: 'btn btn-primary mr-3'
-  end
+/ h2  この作り手のプロダクト一覧
+/ .mb-3
+/ table.table.table-hover
+/   thead.thead-defolt
+/     tr
+/       th= @products.human_attribute_name(:name)
+/       th= @products.human_attribute_name(:created_at)
+/       th
+/   tbody
+/   - @products.each do |product|
+/     tr
+/       td= link_to product.name, product
+/       td= product.created_at
+/       td
+/         = link_to '評価', new_evaluate_path, class: 'btn btn-primary mr-3'
+/   end
 
-/ .nav.justify-content-end
-/   = link_to "#{current_maker.name} の情報詳細へ", makers_path(id: maker.id)
+/ / .nav.justify-content-end
+/ /   = link_to "#{current_maker.name} の情報詳細へ", makers_path(id: maker.id)

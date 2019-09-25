@@ -1,6 +1,6 @@
-h2  「#{@maker.name}」のプロダクト一覧
+h2  プロダクト一覧
 
--if maker_signed_in?
+- if maker_signed_in?
   =link_to 'プロダクト新規登録', new_product_path,class: 'btn btn-outline-info btn-block'
 
 .mb-3
@@ -8,13 +8,15 @@ table.table.table-hover
   thead.thead-defolt
     tr
       th= @products.human_attribute_name(:name)
-      th= @products.human_attribute_name(:created_at)
+      th= @products.human_attribute_name(:season)
       th
   tbody
   - @products.each do |product|
     tr
       td= link_to product.name, product
-      td= product.created_at
+      / td= image_tag product.image.url
+      td= product.season
+
       td
         -if maker_signed_in?
           = link_to '編集', edit_product_path(product), class: 'btn btn-primary mr-3'
