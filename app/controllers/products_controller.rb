@@ -4,7 +4,9 @@ class ProductsController < ApplicationController
 
   def index
     # @products = current_maker.products
-    @products = Product.all
+    # @products = Product.all
+    @products = Product.where(maker_id: params[:maker_id])
+    @maker = Maker.find_by(id: params[:maker_id])
   end
 
   def show

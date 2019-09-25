@@ -1,2 +1,17 @@
-h1 Customers#edit
-p Find me in app/views/customers/edit.html.slim
+h2 『#{@customer.display_name}』 の登録情報を編集
+
+= form_with model: @customer, local: true do |f|
+  .form-group
+    = f.label :full_name
+    = f.text_field :name, class: 'form-control', id: 'customer_full_name'
+  .form-group
+    = f.label :display_name
+    = f.text_field :price, class: 'form-control', id: 'customer_display_name'
+  .form-group
+    = f.label :icon
+    = f.file_field :icon, class: 'form-control', id: 'customer_icon'
+  .form-group
+    = f.label :residence
+    = f.text_field :residence, class: 'form-control', id: 'customer_residence'
+  =f.submit nil, class: 'btn btn-outline-info btn-block'
+= link_to '戻る', 'javascript:history.back()'

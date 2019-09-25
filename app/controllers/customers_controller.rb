@@ -16,7 +16,7 @@ class CustomersController < ApplicationController
 
   def update
     @customer.update!(customer_params)
-    redirect_to action: :show, notice: "カスタマー「#{@customer.name}」を更新しました。"
+    redirect_to action: :show, notice: "カスタマー「#{@customer.display_name}」を更新しました。"
   end
 
   # def destroy

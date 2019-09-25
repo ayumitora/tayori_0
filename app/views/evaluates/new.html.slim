@@ -1,3 +1,6 @@
-h1 Evaluates#new
+h1 新しくレビューする
 p Find me in app/views/evaluates/new.html.slim
 = render partial: 'form', locals: {evaluate: @evaluate}
+
+.nav.justify-content-end
+  = link_to '戻る', 'javascript:history.back()'

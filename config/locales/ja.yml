@@ -11,13 +11,14 @@ ja:
       maker: メーカー
       product: プロダクト
       customer: カスタマー
+      evaluate: レビュー
     attributes:
       product:
         id: プロダクトID
         name: プロダクト名
         price: 参考価格
         image: 画像
-        season: 販売時期
+        season: 創作期
         created_at: 登録日時
         updated_at: 更新日時
       maker:
@@ -28,20 +29,35 @@ ja:
         password: パスワード
         current_password: 現在のパスワード
         password_confirmation: 確認用パスワード
-        remember_me: ログインを記憶
+        remember_me: ログインを記憶する
         site_url: ウェブサイト
         logo: ロゴ画像
         image: トップ画像
         ivent: ニュース
         created_at: 登録日時
         updated_at: 更新日時
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
       customer:
         id: カスタマーID
+        email: メールアドレス
         full_name: 氏名
         display_name: 表示名
         icon: アイコン
         score: スコア
         residence: 居住地
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+      evaluate:
+        id: レビューID
+        rate: 星
+        image: 画像
+        content: 感想
+        comment: コメント
   date:
     abbr_day_names:
     - 日

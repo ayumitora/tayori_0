@@ -1,7 +1,8 @@
-h2 『#{@customer.full_name}』 の登録情報
+h2 『#{@customer.display_name}』 の登録情報
+=link_to '新たにをレビューを登録する', makers_path,class: 'btn btn-outline-info btn-block'
 
 .nav.justify-content-end
-  = link_to "#{@customer.display_name} の評価プロダクト一覧へ", evaluates_path
+  = link_to "#{@customer.display_name} のレビュー一覧へ", evaluates_path
 table.table.table-hover
   tbody
     tr
@@ -22,7 +23,7 @@ table.table.table-hover
     tr
       th= Customer.human_attribute_name(:residence)
       td= @customer.residence
-= link_to '編集', customers_edit_path(id: @customer.id), class: 'btn btn-primary mr-3'
+= link_to '編集', edit_customer_path(id: @customer.id), class: 'btn btn-primary mr-3'
 
 / 改行があるばあい、      td= simple_format(h(@customer.price), {}, sanitize: false, wrapper_tag: "div")
   のように書くこと

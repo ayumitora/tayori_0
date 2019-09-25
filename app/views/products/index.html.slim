@@ -1,5 +1,7 @@
-h2  全メーカープロダクト一覧
-=link_to 'プロダクト新規登録', new_product_path,class: 'btn btn-outline-info btn-block'
+h2  「#{@maker.name}」のプロダクト一覧
+
+-if maker_signed_in?
+  =link_to 'プロダクト新規登録', new_product_path,class: 'btn btn-outline-info btn-block'
 
 .mb-3
 table.table.table-hover
@@ -14,9 +16,13 @@ table.table.table-hover
       td= link_to product.name, product
       td= product.created_at
       td
-        = link_to '編集', edit_product_path(product), class: 'btn btn-primary mr-3'
-        = link_to '削除', product, method: :delete, data: { confirm: "プロダクト「#{product.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+        -if maker_signed_in?
+          = link_to '編集', edit_product_path(product), class: 'btn btn-primary mr-3'
+          = link_to '削除', product, method: :delete, data: { confirm: "プロダクト「#{product.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+        -if customer_signed_in?
+          =link_to 'レビューする', new_evaluate_path(product_id: product.id),class: 'btn btn-outline-info mr-2'
   end
-
+.nav.justify-content-end
+  = link_to '戻る', 'javascript:history.back()'
 / .nav.justify-content-end
 /   = link_to "#{current_maker.name} の情報詳細へ", makers_path(id: maker.id)

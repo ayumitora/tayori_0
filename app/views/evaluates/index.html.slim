@@ -1,2 +1,28 @@
 h1 Evaluates#index
 p Find me in app/views/evaluates/index.html.slim
+
+h2  評価したプロダクト一覧
+=link_to '新たにプロダクトを評価する', makers_path,class: 'btn btn-outline-info btn-block'
+
+.mb-3
+table.table.table-hover
+  thead.thead-defolt
+    tr
+      th= Product.human_attribute_name(:name)
+      th= Product.human_attribute_name(:created_at)
+      th
+  tbody
+  - @evaluates.each do |evaluate|
+    tr
+      td= link_to evaluate.product.name, evaluate
+      td= evaluate.product.created_at
+      td
+        = link_to '編集', edit_evaluate_path(evaluate), class: 'btn btn-primary mr-3'
+        = link_to '削除', evaluate, method: :delete, data: { confirm: "プロダクト「#{evaluate.product.name}」の評価を削除します。よろしいですか？" }, class: 'btn btn-danger'
+  end
+
+.nav.justify-content-end
+  = link_to '戻る', 'javascript:history.back()'
+
+/ .nav.justify-content-end
+/   = link_to "#{current_maker.name} の情報詳細へ", makers_path(id: maker.id)

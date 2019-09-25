@@ -27,7 +27,7 @@ class Customers::SessionsController < Devise::SessionsController
   private
     # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource_or_scope)
-    customers_show_path(current_customer)
+    customer_path(current_customer)
   end
 
   # ログアウト後のリダイレクト先

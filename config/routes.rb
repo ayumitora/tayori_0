@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get 'customers/index'
-  get 'customers/show'
-  get 'customers/new'
-  get 'customers/edit'
+  # get 'customers/index'
+  # get 'customers/show'
+  # get 'customers/new'
+  # get 'customers/edit'
   get 'home/index'
   get 'home/show'
   root to: "home#index"
 
   devise_for :customers, controllers: {
-        sessions: 'customers/sessions'
+    sessions: 'customers/sessions'
   }
 
   devise_for :makers, controllers: {
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :evaluates
   resources :products
   resources :makers
+  resources :customers
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 
