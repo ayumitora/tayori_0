@@ -66,7 +66,6 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'devise'
 gem 'carrierwave'
-# gem 'mini_magick'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
+gem 'jquery-rails'
