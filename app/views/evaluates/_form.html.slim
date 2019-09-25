@@ -6,6 +6,23 @@
   .form-group
     = f.label :customer_id
     = f.text_field :customer_id, class: 'form-control', id: 'evaluate_content'
+  #star.form-group.row
+    = f.label :rate,'評価 ', class:'col-md-3 col-form-label', id: 'evaluate_rate'
+    = f.hidden_field :rate, id: :review_star
+        / <!-- 評価javascript --
+  script
+    |  $('#star').raty({ size : 36, starOff: '<ruby code="= asset_path('star-off.png')"></ruby>', starOn : '<ruby code="= asset_path('star-on.png')"></ruby>', starHalf: '<ruby code="= asset_path('star-half.png')"></ruby>', scoreName: 'evaluate[rate]', score: '<ruby code="= @evaluate.rate"></ruby>', half: true });
+      / script
+      /   $('#star').raty({
+      /     size: 36,
+      /     starOff: = asset_path('star-off.png'),
+      /     starOn: = asset_path('star-on.png'),
+      /     starHalf: = asset_path('star-half.png'),
+      /     scoreName: evaluate[rate],
+      /     score: = @evaluate.rate,
+      /     half: true
+      /   });
+
   .form-group
     = f.label :content
     = f.text_field :content, class: 'form-control', id: 'evaluate_content'
