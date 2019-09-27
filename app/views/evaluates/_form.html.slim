@@ -1,5 +1,4 @@
-/ h2 " #{@evaluate.product.id} について"
-= form_with model: @evaluate, local: true do |f|
+= form_with model: evaluate, local: true do |f|
   .form-group
     = f.label :product_id
     = f.text_field :product_id, class: 'form-control', id: 'evaluate_content'
@@ -9,18 +8,7 @@
   #star.form-group.row
     = f.label :rate,'評価 ', class:'col-md-3 col-form-label', id: 'evaluate_rate'
     = f.hidden_field :rate, id: :review_star
-        / <!-- 評価javascript --
-
-  javascript:
-    $('#star').raty({
-    size: 36,
-    starOff: = asset_path('star-off.png'),
-    starOn: = asset_path('star-on.png'),
-    starHalf: = asset_path('star-half.png'),
-    scoreName: evaluate[rate],
-    score: = @evaluate.rate,
-    half: true
-    });
+    = render partial: 'set_star_js', evaluate: f
 
 
   .form-group

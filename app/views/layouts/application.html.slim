@@ -9,22 +9,21 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    / script src="/js/jquery.min.js"
-    / script src="/js/jquery.raty.js"
   body
     .app-title.navber.navber-expand-md.navber-light.bg-light
       .navber-brand TAYORI
       - if maker_signed_in?
+        li= link_to 'マイページへ', maker_path(current_maker)
         li= link_to 'メーカーログイン情報を変更', edit_maker_registration_path
         li = link_to "メーカー「#{current_maker.name}」をログアウト", destroy_maker_session_path, method: :delete
-      - else
-        li = link_to 'メーカーログイン', new_maker_session_path
-        li = link_to 'メーカーサインアップ', new_maker_registration_path
-      br
-      - if customer_signed_in?
+      - elsif customer_signed_in?
+        li= link_to 'マイページへ', customer_path(current_customer)
         li= link_to 'カスタマーログイン情報を変更', edit_customer_registration_path
         li = link_to "カスタマー「#{current_customer.display_name}」をログアウト", destroy_customer_session_path, method: :delete
       - else
+        li = link_to 'メーカーログイン', new_maker_session_path
+        li = link_to 'メーカーサインアップ', new_maker_registration_path
+        br
         li = link_to 'カスタマーログイン', new_customer_session_path
         li = link_to 'カスタマーサインアップ', new_customer_registration_path
 

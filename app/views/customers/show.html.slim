@@ -2,7 +2,7 @@ h2 『#{@customer.display_name}』 の登録情報
 =link_to '新たにをレビューを登録する', makers_path,class: 'btn btn-outline-info btn-block'
 
 .nav.justify-content-end
-  = link_to "#{@customer.display_name} のレビュー一覧へ", evaluates_path
+  = link_to "#{@customer.display_name} のレビュー一覧へ", evaluates_path(@customer.id)
 table.table.table-hover
   tbody
     tr
