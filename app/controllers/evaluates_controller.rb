@@ -11,17 +11,13 @@ class EvaluatesController < ApplicationController
   end
 
   def new
-    # @evaluate = Evaluate.new
-    # @evaluate.product_id = params[:product_id]
+
     @evaluate = Evaluate.new(product_id: params[:product_id])
     @evaluate.customer_id = current_customer.id
-    # @product =  Product.find(id: params[:product_id])
-    # @evaluate =evaluate.product.id(params[:id])
   end
 
   def create
     @evaluate = Evaluate.new(evaluate_params)
-    # @evaluate.user_id = current_maker.id
     @evaluate.save!
     redirect_to evaluates_url, notice: "「#{@evaluate.product.name}」の評価を登録しました。"
   end

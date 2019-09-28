@@ -1,0 +1,12 @@
+<script>
+  $('#star').raty({
+  size     : 50,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  scoreName: 'evaluate[rate]',
+  score: '<%= @evaluate.rate %>',
+  half: true
+  });
+</script>
+<%# slimにすると動かなくなるのでひとまずerbに留め置いています %>

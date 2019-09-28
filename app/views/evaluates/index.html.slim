@@ -1,4 +1,7 @@
-h2  評価したプロダクト一覧
+
+/ h2  #{@evaluate.customer.dispray_name}が評価したプロダクト一覧
+h2  評価されたプロダクト一覧
+
 =link_to '新たにプロダクトを評価する', makers_path,class: 'btn btn-outline-info btn-block'
 
 .mb-3
@@ -7,12 +10,16 @@ table.table.table-hover
     tr
       th= Product.human_attribute_name(:name)
       th= Product.human_attribute_name(:created_at)
+      th= Evaluate.human_attribute_name(:rate)
+
       th
   tbody
   - @evaluates.each do |evaluate|
     tr
       td= link_to evaluate.product.name, evaluate
       td= evaluate.product.created_at
+      td= render 'display_star_js', evaluate: evaluate
+
       td
         = link_to '編集', edit_evaluate_path(evaluate), class: 'btn btn-primary mr-3'
         = link_to '削除', evaluate, method: :delete, data: { confirm: "プロダクト「#{evaluate.product.name}」の評価を削除します。よろしいですか？" }, class: 'btn btn-danger'
