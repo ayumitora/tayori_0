@@ -1,2 +1,24 @@
-h1 Evaluates#show
-p Find me in app/views/evaluates/show.html.slim
+h1 評価の詳細
+table.table.table-hover
+  tbody
+    tr
+      th= Product.human_attribute_name(:name)
+      td= @evaluate.product.name
+    tr
+      th= Customer.human_attribute_name(:display_name)
+      td= @evaluate.customer.display_name
+    tr
+      th= Product.human_attribute_name(:image)
+      td= image_tag @evaluate.product.image.url
+    tr
+      th= Evaluate.human_attribute_name(:rate)
+      td= render 'display_star_js', evaluate: @evaluate
+    tr
+      th= Evaluate.human_attribute_name(:content)
+      td= @evaluate.content
+    tr
+      th= Evaluate.human_attribute_name(:comment)
+      td= @evaluate.comment
+
+
+      / 改行があるばあい、      td= simple_format(h(@product.price), {}, sanitize: false, wrapper_tag: "div")

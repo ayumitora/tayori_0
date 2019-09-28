@@ -1,10 +1,16 @@
+table.table.table-hover
+  tbody
+    tr
+      th= Product.human_attribute_name(:name)
+      td= evaluate.product.name
+    tr
+      th= Customer.human_attribute_name(:display_name)
+      td= evaluate.customer.display_name
+    tr
+      th= Product.human_attribute_name(:image)
+      td= image_tag evaluate.product.image.url
+
 = form_with model: evaluate, local: true do |f|
-  .form-group
-    = f.label :product_id
-    = f.text_field :product_id, class: 'form-control', id: 'evaluate_content'
-  .form-group
-    = f.label :customer_id
-    = f.text_field :customer_id, class: 'form-control', id: 'evaluate_content'
   #star.form-group.row
     = f.label :rate,'評価 ', class:'col-md-3 col-form-label', id: 'evaluate_rate'
     = f.hidden_field :rate, id: :review_star
@@ -13,7 +19,7 @@
 
   .form-group
     = f.label :content
-    = f.text_field :content, class: 'form-control', id: 'evaluate_content'
+    = f.text_area :content, class: 'form-control', id: 'evaluate_content'
   .form-group
     = f.label :image
     = f.file_field :image, class: 'form-control', id: 'evaluate_image'

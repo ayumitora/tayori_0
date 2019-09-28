@@ -1,12 +1,13 @@
+<div id="star-rate-<%= evaluate.id %>"></div>
 <script>
-  $('#star').raty({
-  size     : 50,
+  $('#star-rate-<%= evaluate.id %>').raty({
+  size: 36,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',
-  scoreName: 'evaluate[rate]',
-  score: '<%= @evaluate.rate %>',
-  half: true
+  half: true,
+  readOnly: true,
+  score: '<%= evaluate.rate ||= 0.0 %>'
   });
 </script>
 <%# slimにすると動かなくなるのでひとまずerbに留め置いています %>

@@ -2,23 +2,20 @@ class EvaluatesController < ApplicationController
   before_action :set_evaluate, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @evaluates = Evaluate.all
-    @evaluates = Evaluate.where(customer_id: params[:customer_id])
+    @evaluates = Evaluate.all
+    # @evaluates = Evaluate.where(customer_id: params[:customer_id])
   end
 
   def show
   end
 
   def new
-    @evaluate = Evaluate.new
-        # @evaluate = Evaluate.new(product_id: params[:product_id])
-    # @product =  Product.find(id: params[:product_id])
-    # @evaluate =evaluate.product.id(params[:id])
+    @evaluate = Evaluate.new(product_id: params[:product_id])
+    @evaluate.customer_id = current_customer.id
   end
 
   def create
     @evaluate = Evaluate.new(evaluate_params)
-    # @evaluate.user_id = current_maker.id
     @evaluate.save!
     redirect_to evaluates_url, notice: "「#{@evaluate.product.name}」の評価を登録しました。"
   end
