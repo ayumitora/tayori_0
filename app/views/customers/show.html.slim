@@ -2,7 +2,7 @@ h2 『#{@customer.display_name}』 の登録情報
 =link_to '新たにをレビューを登録する', makers_path,class: 'btn btn-outline-info btn-block'
 
 .nav.justify-content-end
-  = link_to "#{@customer.display_name} のレビュー一覧へ", evaluates_path(@customer.id)
+  = link_to "#{@customer.display_name} のレビュー一覧へ", evaluates_path(customer_id: @customer.id)
 table.table.table-hover
   tbody
     tr
@@ -16,7 +16,10 @@ table.table.table-hover
       td= @customer.display_name
     tr
       th= Customer.human_attribute_name(:icon)
-      td= image_tag @customer.icon.url
+      - if @customer.icon.url.present?
+        td= image_tag @customer.icon.url
+      - else
+        td= image_tag 'no_image.jpg'
     tr
       th= Customer.human_attribute_name(:score)
       td= @customer.score

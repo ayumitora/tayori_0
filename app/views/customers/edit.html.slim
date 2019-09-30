@@ -3,10 +3,10 @@ h2 『#{@customer.display_name}』 の登録情報を編集
 = form_with model: @customer, local: true do |f|
   .form-group
     = f.label :full_name
-    = f.text_field :name, class: 'form-control', id: 'customer_full_name'
+    = f.text_field :full_name, class: 'form-control', id: 'customer_full_name'
   .form-group
     = f.label :display_name
-    = f.text_field :price, class: 'form-control', id: 'customer_display_name'
+    = f.text_field :display_name, class: 'form-control', id: 'customer_display_name'
   .form-group
     = f.label :icon
     = f.file_field :icon, class: 'form-control', id: 'customer_icon'

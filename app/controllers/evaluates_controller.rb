@@ -3,15 +3,17 @@ class EvaluatesController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show]
 
   def index
-    @evaluates = Evaluate.all
-    # @evaluates = Evaluate.where(customer_id: params[:customer_id])
+    # @evaluates = Evaluate.all
+        # @products = Product.where(maker_id: params[:maker_id])
+
+    @evaluates = Evaluate.where(customer_id: params[:customer_id])
+    # binding.pry
   end
 
   def show
   end
 
   def new
-
     @evaluate = Evaluate.new(product_id: params[:product_id])
     @evaluate.customer_id = current_customer.id
   end
@@ -19,7 +21,7 @@ class EvaluatesController < ApplicationController
   def create
     @evaluate = Evaluate.new(evaluate_params)
     @evaluate.save!
-    redirect_to evaluates_url, notice: "「#{@evaluate.product.name}」の評価を登録しました。"
+    redirect_to evaluate_url, notice: "「#{@evaluate.product.name}」の評価を登録しました。"
   end
 
   def edit
