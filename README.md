@@ -22,7 +22,7 @@ Ruby 2.6.3 Rails 5.2.3
  画像アップロード機能
  スコア付与機能
  平均評価や満足度を算出、表示する機能
- 
+
 カタログ設計
 https://docs.google.com/document/d/19AosYsUj0ooqoORsVBs2iV-PVc_YHyEf7snmWLcTWgQ/edit?usp=sharing
 
@@ -42,5 +42,5 @@ https://cacoo.com/diagrams/d5d1KvLMnnVK5hfz/9DA60
 carrierwave
 mini_magick
 devise
-ratyrate
+raty
 jquery-rails
