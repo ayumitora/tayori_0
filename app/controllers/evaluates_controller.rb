@@ -21,7 +21,7 @@ class EvaluatesController < ApplicationController
   def create
     @evaluate = Evaluate.new(evaluate_params)
     @evaluate.save!
-    redirect_to evaluate_url, notice: "「#{@evaluate.product.name}」の評価を登録しました。"
+    redirect_to evaluate_url(id: @evaluate.id), notice: "「#{@evaluate.product.name}」の評価を登録しました。"
   end
 
   def edit
@@ -29,11 +29,11 @@ class EvaluatesController < ApplicationController
 
   def update
     @evaluate.update!(evaluate_params)
-    redirect_to evaluates_url, notice: "プロダクト「#{@evaluate.product.name}」の評価を更新しました。"
+    redirect_to evaluates_url(customer_id: @evaluate.customer_id), notice: "プロダクト「#{@evaluate.product.name}」の評価を更新しました。"
   end
   def destroy
     @evaluate.destroy
-    redirect_to evaluates_url, notice: "プロダクト「#{@evaluate.product.name}」を削除しました。"
+    redirect_to evaluates_url(customer_id: @evaluate.customer_id), notice: "プロダクト「#{@evaluate.product.name}」を削除しました。"
   end
 
 

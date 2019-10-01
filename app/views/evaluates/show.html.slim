@@ -2,7 +2,7 @@
 h2 #{@evaluate.customer.display_name} による#{@evaluate.product.name}のレビュー
 
 .nav.justify-content-end
-  = link_to "#{@evaluate.customer.display_name} のレビュー一覧へ", evaluates_path
+  = link_to "#{@evaluate.customer.display_name} のレビュー一覧へ", evaluates_path(customer_id: @evaluate.customer_id)
 
 h1 評価の詳細
 table.table.table-hover
@@ -11,11 +11,14 @@ table.table.table-hover
       th= Product.human_attribute_name(:name)
       td= @evaluate.product.name
     tr
+      th= Product.human_attribute_name(:image)
+      td= image_tag @evaluate.product.image.url
+    tr
       th= Customer.human_attribute_name(:display_name)
       td= @evaluate.customer.display_name
     tr
       th= Product.human_attribute_name(:image)
-      td= image_tag @evaluate.product.image.url
+      td= image_tag @evaluate.image.url
     tr
       th= Evaluate.human_attribute_name(:rate)
       td= render 'display_star_js', evaluate: @evaluate
