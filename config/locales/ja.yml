@@ -44,7 +44,7 @@ ja:
         id: カスタマーID
         email: メールアドレス
         full_name: 氏名
-        display_name: 表示名
+        display_name: カスタマー名
         icon: アイコン
         score: スコア
         residence: 居住地

@@ -20,6 +20,7 @@ class EvaluatesController < ApplicationController
 
   def create
     @evaluate = Evaluate.new(evaluate_params)
+    @evaluate.customer_id = current_customer.id
     @evaluate.save!
     redirect_to evaluate_url(id: @evaluate.id), notice: "「#{@evaluate.product.name}」の評価を登録しました。"
   end

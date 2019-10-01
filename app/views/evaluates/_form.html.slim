@@ -15,9 +15,9 @@ table.table.table-hover
     = f.label :product_id
     = f.text_field :product_id, value: @evaluate.product_id, class: 'form-control'
 
-    .form-group
-    = f.label :customer_id
-    = f.text_field :customer_id, value: @evaluate.customer_id, class: 'form-control'
+    / .form-group
+    / = f.label :customer_id
+    / = f.text_field :customer_id, value: @evaluate.customer_id, class: 'form-control'
 
   #star.form-group.row
     = f.label :rate,'評価 ', class:'col-md-3 col-form-label', id: 'evaluate_rate'
