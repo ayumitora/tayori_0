@@ -1,7 +1,7 @@
 h2 『#{@maker.name}』 の登録情報
 
 .nav.justify-content-end
-  = link_to   = link_to "#{@maker.name} のプロダクト一覧へ", products_path
+  = link_to   = link_to "#{@maker.name} のプロダクト一覧へ", products_path(maker_id: @maker.id)
 table.table.table-hover
   tbody
     tr
