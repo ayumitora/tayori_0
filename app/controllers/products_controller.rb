@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_maker!
+  before_action :authenticate_maker!, except: [:index, :show]
 
   def index
     @products = current_maker.products
