@@ -22,7 +22,10 @@ table.table.table-hover
       td= image_tag @maker.logo.url
     tr
       th= Maker.human_attribute_name(:image)
-      td= image_tag @maker.image.url
+      - if @maker.image.url.present?
+        td= image_tag @maker.image.url
+      - else
+        td= image_tag 'no_image.jpg'
     tr
       th= Maker.human_attribute_name(:ivent)
       td= @maker.ivent
