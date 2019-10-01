@@ -8,14 +8,14 @@ table.table.table-hover
   thead.thead-defolt
     tr
       th= @products.human_attribute_name(:name)
-      th= @products.human_attribute_name(:season)
+      th= @products.human_attribute_name(:evalustes_count)
       th
   tbody
   - @products.each do |product|
     tr
       td= link_to product.name, product
       / td= image_tag product.image.url
-      td= product.season
+      td= product.evaluates.count
 
       td
         -if maker_signed_in?

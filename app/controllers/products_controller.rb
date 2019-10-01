@@ -5,9 +5,11 @@ class ProductsController < ApplicationController
   def index
     @products = Product.where(maker_id: params[:maker_id])
     @maker = Maker.find_by(id: params[:maker_id])
+    # @evaluates = Evaluate.where()
   end
 
   def show
+    @product_score = @product.evaluates.average(:rate).round(1)
   end
 
   def new
@@ -18,7 +20,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.maker_id = current_maker.id
     @product.save!
-    redirect_to products_url, notice: "プロダクト「#{@product.name}」を登録しました。"
+    redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を登録しました。"
   end
 
   def edit
@@ -26,12 +28,12 @@ class ProductsController < ApplicationController
 
   def update
     @product.update!(product_params)
-    redirect_to products_url, notice: "プロダクト「#{@product.name}」を更新しました。"
+    redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を更新しました。"
   end
 
   def destroy
     @product.destroy
-    redirect_to products_url, notice: "プロダクト「#{@product.name}」を削除しました。"
+    redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を削除しました。"
   end
 
   private

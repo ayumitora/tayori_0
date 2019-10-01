@@ -13,16 +13,26 @@ table.table.table-hover
       td= @product.price
     tr
       th= Product.human_attribute_name(:image)
-        - if @product.image.url.present?
-          td= image_tag @product.image.url
-        - else
-          td= image_tag 'no_image.jpg'
+      - if @product.image.url.present?
+        td= image_tag @product.image.url
+      - else
+        td= image_tag 'no_image.jpg'
     tr
       th= Product.human_attribute_name(:season)
       td= @product.season
     tr
       th= Maker.human_attribute_name(:name)
       td= @product.maker.name
+    tr
+      th= Evaluate.human_attribute_name(:count)
+      td= @product.evaluates.count
+    tr
+      th= Evaluate.human_attribute_name(:rate_average)
+      td= @product.evaluates.average(:rate).round(1)
+    tr
+      th= Evaluate.human_attribute_name(:rate)
+      td= render 'display_star_js', product_score: @product_score, product: @product
+
 .nav.justify-content-end
   / = link_to "#{@product.maker.name} のプロダクト一覧へ", products_path(@product.maker)
   = link_to '戻る', 'javascript:history.back()'

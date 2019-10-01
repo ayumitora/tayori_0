@@ -21,6 +21,7 @@ ja:
         season: 創作期
         created_at: 登録日時
         updated_at: 更新日時
+        evalustes_count: 評価数
       maker:
         id: メーカーID
         name: メーカー名
@@ -58,6 +59,8 @@ ja:
         image: 画像
         content: 感想
         comment: コメント
+        rate_average: 平均評価
+        count: 評価数
   date:
     abbr_day_names:
     - 日
