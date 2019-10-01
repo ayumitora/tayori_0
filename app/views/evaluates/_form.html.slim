@@ -11,19 +11,12 @@ table.table.table-hover
       td= image_tag evaluate.product.image.url
 
 = form_with model: evaluate, local: true do |f|
-  .form-group
-    = f.label :product_id
-    = f.text_field :product_id, value: @evaluate.product_id, class: 'form-control'
-
-    / .form-group
-    / = f.label :customer_id
-    / = f.text_field :customer_id, value: @evaluate.customer_id, class: 'form-control'
-
+  = f.hidden_field :product_id, value: @evaluate.product_id
+  / ↑フォームに登場させずにどのプロダクトの評価なのかの情報を付与している
   #star.form-group.row
     = f.label :rate,'評価 ', class:'col-md-3 col-form-label', id: 'evaluate_rate'
     = f.hidden_field :rate, id: :review_star
     = render partial: 'set_star_js', evaluate: f
-
 
   .form-group
     = f.label :content
