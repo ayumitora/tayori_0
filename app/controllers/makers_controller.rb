@@ -17,7 +17,7 @@ class MakersController < ApplicationController
 
   def update
     @maker.update!(maker_params)
-    redirect_to action: :show, notice: "メーカー「#{@maker.name}」を更新しました。"
+    redirect_to maker_url, notice: "メーカー「#{@maker.name}」を更新しました。"
   end
 
   def destroy

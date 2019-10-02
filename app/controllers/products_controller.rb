@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def show
     @product_score = @product.evaluates.average(:rate).round(1)
+    @evaluates = Evaluate.where(product_id: params[:id])
   end
 
   def new

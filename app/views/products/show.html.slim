@@ -31,13 +31,41 @@ table.table.table-hover
       td= @product.evaluates.average(:rate).round(1)
     tr
       th= Evaluate.human_attribute_name(:rate)
-      td= render 'display_star_js', product_score: @product_score, product: @product
+      td= render 'display_average_js', product_score: @product_score, product: @product
 
 .nav.justify-content-end
   / = link_to "#{@product.maker.name} のプロダクト一覧へ", products_path(@product.maker)
-  = link_to '戻る', 'javascript:history.back()'
 = link_to '編集', edit_product_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @product, method: :delete, data: { confirm: "プロダクト「#{@product.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
+br
+br
 / 改行があるばあい、      td= simple_format(h(@product.price), {}, sanitize: false, wrapper_tag: "div")
   のように書くこと
+
+
+/ h2  #{@evaluate.customer.dispray_name}が評価したプロダクト一覧
+h2  このプロダクトの評価一覧
+.mb-3
+table.table.table-hover
+  thead.thead-defolt
+    tr
+      th= Customer.human_attribute_name(:display_name)
+      th= Product.human_attribute_name(:created_at)
+      th= Evaluate.human_attribute_name(:rate)
+
+  tbody
+  - @evaluates.each do |evaluate|
+    tr
+      td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
+            / td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
+      td= evaluate.product.created_at
+      td= render 'display_star_js', evaluate: evaluate
+
+      td
+        = link_to '評価詳細へ', evaluate_path(evaluate), class: 'btn btn-primary mr-3'
+  end
+
+.nav.justify-content-end
+  = link_to '戻る', 'javascript:history.back()'
+

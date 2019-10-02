@@ -1,8 +1,8 @@
 
 / h2  #{@evaluate.customer.dispray_name}が評価したプロダクト一覧
 h2  評価されたプロダクト一覧
-
-=link_to '新たにプロダクトを評価する', makers_path,class: 'btn btn-outline-info btn-block'
+- if customer_signed_in?
+  =link_to '新たにプロダクトを評価する', makers_path,class: 'btn btn-outline-info btn-block'
 
 .mb-3
 table.table.table-hover
@@ -21,12 +21,12 @@ table.table.table-hover
       td= render 'display_star_js', evaluate: evaluate
 
       td
-        = link_to '編集', edit_evaluate_path(evaluate), class: 'btn btn-primary mr-3'
-        = link_to '削除', evaluate, method: :delete, data: { confirm: "プロダクト「#{evaluate.product.name}」の評価を削除します。よろしいですか？" }, class: 'btn btn-danger'
+        - if customer_signed_in?
+          = link_to '編集', edit_evaluate_path(evaluate), class: 'btn btn-primary mr-3'
+          = link_to '削除', evaluate, method: :delete, data: { confirm: "プロダクト「#{evaluate.product.name}」の評価を削除します。よろしいですか？" }, class: 'btn btn-danger'
+        - elsif maker_signed_in?
+          = link_to '評価詳細へ', evaluate_path(evaluate), class: 'btn btn-primary mr-3'
   end
 
 .nav.justify-content-end
   = link_to '戻る', 'javascript:history.back()'
-
-/ .nav.justify-content-end
-/   = link_to "#{current_maker.name} の情報詳細へ", makers_path(id: maker.id)
