@@ -11,6 +11,11 @@ class EvaluatesController < ApplicationController
   end
 
   def show
+    @maker_comments = @evaluate.maker_comments
+    @maker_comment = @evaluate.maker_comments.build
+    @customer_comments = @evaluate.customer_comments
+    @customer_comment = @evaluate.customer_comments.build
+
   end
 
   def new

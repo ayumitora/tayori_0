@@ -1,0 +1,21 @@
+<%= form_with(model: [evaluate, customer_comment]) do |form| %>
+  <% if customer_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer_comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% customer_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

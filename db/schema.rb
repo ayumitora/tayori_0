@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_014822) do
+ActiveRecord::Schema.define(version: 2019_10_02_023023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customer_comments", force: :cascade do |t|
+    t.bigint "evaluate_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evaluate_id"], name: "index_customer_comments_on_evaluate_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "display_name"
@@ -38,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_014822) do
   end
 
   create_table "evaluates", force: :cascade do |t|
-    t.integer "product_id", null: false
+    t.integer "product_id"
     t.integer "customer_id"
     t.float "rate"
     t.string "image"
@@ -49,6 +57,14 @@ ActiveRecord::Schema.define(version: 2019_09_18_014822) do
     t.index ["customer_id"], name: "index_evaluates_on_customer_id"
     t.index ["product_id", "customer_id"], name: "index_evaluates_on_product_id_and_customer_id", unique: true
     t.index ["product_id"], name: "index_evaluates_on_product_id"
+  end
+
+  create_table "maker_comments", force: :cascade do |t|
+    t.bigint "evaluate_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evaluate_id"], name: "index_maker_comments_on_evaluate_id"
   end
 
   create_table "makers", force: :cascade do |t|
@@ -85,5 +101,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_014822) do
     t.index ["maker_id"], name: "index_products_on_maker_id"
   end
 
+  add_foreign_key "customer_comments", "evaluates"
+  add_foreign_key "maker_comments", "evaluates"
   add_foreign_key "products", "makers"
 end

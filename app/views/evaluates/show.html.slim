@@ -37,3 +37,11 @@ table.table.table-hover
 / 改行があるばあい、      td= simple_format(h(@evaluate.price), {}, sanitize: false, wrapper_tag: "div")
   のように書くこと
 
+#maker_comments_area
+  = render partial: 'maker_comments/index', locals: { maker_comments: @maker_comments, evaluate: @evaluate }
+  = render partial: 'maker_comments/form', locals: { maker_comment: @maker_comment, evaluate: @evaluate }
+
+
+#customer_comments_area
+  = render partial: 'customer_comments/index', locals: { customer_comments: @customer_comments, evaluate: @evaluate }
+  = render partial: 'customer_comments/form', locals: { customer_comment: @customer_comment, evaluate: @evaluate }

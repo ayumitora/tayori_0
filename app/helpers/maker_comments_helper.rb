@@ -1,0 +1,2 @@
+module MakerCommentsHelper
+end

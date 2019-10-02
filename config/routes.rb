@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  # get 'customers/index'
-  # get 'customers/show'
-  # get 'customers/new'
-  # get 'customers/edit'
+  get 'customer_comments/create'
+  get 'maker_comments/create'
   get 'home/index'
   get 'home/show'
   root to: "home#index"
@@ -15,7 +13,11 @@ Rails.application.routes.draw do
     sessions: 'makers/sessions'
   }
 
-  resources :evaluates
+  resources :evaluates do
+    resources :maker_comments
+    resources :customer_comments
+  end
+
   resources :products
   resources :makers
   resources :customers
