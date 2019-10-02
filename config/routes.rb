@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'customer_comments/create'
-  get 'maker_comments/create'
   get 'home/index'
   get 'home/show'
   root to: "home#index"
