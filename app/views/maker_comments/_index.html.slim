@@ -1,0 +1,8 @@
+ul
+  - maker_comments.each do |maker_comment|
+    - if maker_comment.id.present?
+      li
+        p
+          = maker_comment.content
+
+
