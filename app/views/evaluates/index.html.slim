@@ -18,12 +18,17 @@ table.table.table-hover
     tr
       td= link_to evaluate.product.name, evaluate
       td= evaluate.product.created_at
-      td= render 'display_star_js', evaluate: evaluate
+      td
+        = evaluate.rate
+        | <div id="star-#{evaluate.id}">
+        == render 'star_js', evaluate: evaluate, score_name: "", readonly_flug: true, tag: "#star-#{evaluate.id}"
 
       td
         - if customer_signed_in?
           = link_to '編集', edit_evaluate_path(evaluate), class: 'btn btn-primary mr-3'
-          = link_to '削除', evaluate, method: :delete, data: { confirm: "プロダクト「#{evaluate.product.name}」の評価を削除します。よろしいですか？" }, class: 'btn btn-danger'
+          = link_to '削除', evaluate, method: :delete,
+            data: { confirm: "プロダクト「#{evaluate.product.name}」の評価を削除します。よろしいですか？" },
+            class: 'btn btn-danger'
         - elsif maker_signed_in?
           = link_to '評価詳細へ', evaluate_path(evaluate), class: 'btn btn-primary mr-3'
   end

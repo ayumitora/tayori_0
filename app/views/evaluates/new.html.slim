@@ -1,6 +1,6 @@
 h1 「#{@evaluate.product.name}」をレビュー
 p Find me in app/views/evaluates/new.html.slim
-= render partial: 'form', locals: {evaluate: @evaluate}
+== render partial: 'form', locals: {evaluate: @evaluate}
 
 .nav.justify-content-end
   = link_to '戻る', 'javascript:history.back()'
