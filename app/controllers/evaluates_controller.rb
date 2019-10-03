@@ -3,11 +3,7 @@ class EvaluatesController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show]
 
   def index
-    # @evaluates = Evaluate.all
-        # @products = Product.where(maker_id: params[:maker_id])
-
     @evaluates = Evaluate.where(customer_id: params[:customer_id])
-    # binding.pry
   end
 
   def show

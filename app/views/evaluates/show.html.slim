@@ -24,7 +24,10 @@ table.table.table-hover
         td= image_tag 'no_image.jpg'
     tr
       th= Evaluate.human_attribute_name(:rate)
-      td= render 'display_star_js', evaluate: @evaluate
+      td
+        = @evaluate.rate
+        | <div id="star-#{@evaluate.id}">
+        == render 'star_js', evaluate: @evaluate, score_name: "", readonly_flug: true, tag: "#star-#{@evaluate.id}"
     tr
       th= Evaluate.human_attribute_name(:content)
       td= simple_format(h(@evaluate.content), {}, sanitize: false, wrapper_tag: "div")
@@ -34,14 +37,13 @@ table.table.table-hover
 - if customer_signed_in?
   = link_to '編集', edit_evaluate_path(id: @evaluate.id), class: 'btn btn-primary mr-3'
 
-/ 改行があるばあい、      td= simple_format(h(@evaluate.price), {}, sanitize: false, wrapper_tag: "div")
-  のように書くこと
+
 
 #maker_comments_area
-  = render partial: 'maker_comments/index', locals: { maker_comments: @maker_comments, evaluate: @evaluate }
-  = render partial: 'maker_comments/form', locals: { maker_comment: @maker_comment, evaluate: @evaluate }
+  == render partial: 'maker_comments/index', locals: { maker_comments: @maker_comments, evaluate: @evaluate }
+== render partial: 'maker_comments/form', locals: { maker_comment: @maker_comment, evaluate: @evaluate }
 
 
 #customer_comments_area
-  = render partial: 'customer_comments/index', locals: { customer_comments: @customer_comments, evaluate: @evaluate }
-  = render partial: 'customer_comments/form', locals: { customer_comment: @customer_comment, evaluate: @evaluate }
+  == render partial: 'customer_comments/index', locals: { customer_comments: @customer_comments, evaluate: @evaluate }
+== render partial: 'customer_comments/form', locals: { customer_comment: @customer_comment, evaluate: @evaluate }
