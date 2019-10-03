@@ -31,7 +31,9 @@ table.table.table-hover
       td= @product.evaluates.average(:rate).round(1)
     tr
       th= Evaluate.human_attribute_name(:rate)
-      td= render 'display_average_js', product_score: @product_score, product: @product
+      td
+        | <div id="star-#{@product.id}">
+        == render 'star_js', evaluate_rate: @product_score, score_name: "", readonly_flug: true, tag: "#star-#{@product.id}"
 
 .nav.justify-content-end
   / = link_to "#{@product.maker.name} のプロダクト一覧へ", products_path(@product.maker)
@@ -60,8 +62,10 @@ table.table.table-hover
       td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
             / td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
       td= evaluate.product.created_at
-      td= render 'display_star_js', evaluate: evaluate
-
+      td
+        = evaluate.rate
+        | <div id="star-#{evaluate.id}">
+        == render 'star_js', evaluate: evaluate, score_name: "", readonly_flug: true, tag: "#star-#{evaluate.id}", evaluate_rate: evaluate.rate
       td
         = link_to '評価詳細へ', evaluate_path(evaluate), class: 'btn btn-primary mr-3'
   end

@@ -25,9 +25,7 @@ table.table.table-hover
           =link_to '評価済み', new_evaluate_path(product_id: product.id),class: 'btn btn-outline-info mr-2'
         -else
           =link_to 'レビューする', new_evaluate_path(product_id: product.id),class: 'btn btn-outline-info mr-2'
-        / -if customer_signed_in?
-        /   =link_to 'レビューする', new_evaluate_path(product_id: product.id),class: 'btn btn-outline-info mr-2'
-  end
+          end
 .nav.justify-content-end
   = link_to '戻る', 'javascript:history.back()'
 / .nav.justify-content-end
