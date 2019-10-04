@@ -9,7 +9,6 @@ class EvaluatesController < ApplicationController
   def show
     @maker_comments = @evaluate.maker_comments
     @maker_comment = MakerComment.new
-    # @maker_comment.evaluate_id = @evaluate.id
     # @customer_comments = @evaluate.customer_comments
     # @customer_comment = @evaluate.customer_comments.build
   end
@@ -43,6 +42,10 @@ class EvaluatesController < ApplicationController
   def evaluate_params
     params.require(:evaluate).permit(:product_id, :customer_id, :rate, :image, :image_cache, :content, :comment)
   end
+
+  # def comment_params
+  #   params.require(:evaluate).permit(:id)
+  # end
 
   def set_evaluate
     @evaluate = Evaluate.find(params[:id])

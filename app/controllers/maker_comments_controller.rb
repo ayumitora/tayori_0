@@ -9,7 +9,8 @@ class MakerCommentsController < ApplicationController
     @maker_comment = MakerComment.new(maker_comment_params)
     @maker_comment.maker_id = current_maker.id
     @maker_comment.save!
-    redirect_back fallback_location: request.referrer
+    redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを書き込みました"
+    # redirect_back fallback_location: request.referrer この書き方はnoticeを付与できない
   end
 
   def edit
