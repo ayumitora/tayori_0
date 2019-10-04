@@ -1,14 +1,22 @@
 class MakerCommentsController < ApplicationController
+  before_action :authenticate_maker!, only: [:edit, :create, :destroy]
+
+  def index
+  end
+
   def create
-    @evaluate = Evaluate.find(params[:evaluate_id])
-    @maker_comment = @evaluate.maker_comments.build(maker_comment_params)
-    respond_to do |format|
-      if @maker_comment.save
-        format.js { render :index }
-      else
-        format.html { redirect_to evaluate_path(@evaluate), notice: '投稿できませんでした...' }
-      end
-    end
+    @maker_comment = MakerComment.new(maker_comment_params)
+    @maker_comment.maker_id = current_maker.id
+    @maker_comment.save
+    redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを追加しました。"
+  end
+
+  def edit
+
+  end
+
+  def destroy
+
   end
 
   private

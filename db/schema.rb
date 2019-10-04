@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_023023) do
+ActiveRecord::Schema.define(version: 2019_10_04_003510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,9 @@ ActiveRecord::Schema.define(version: 2019_10_02_023023) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "maker_id"
     t.index ["evaluate_id"], name: "index_maker_comments_on_evaluate_id"
+    t.index ["maker_id"], name: "index_maker_comments_on_maker_id"
   end
 
   create_table "makers", force: :cascade do |t|
@@ -103,5 +105,6 @@ ActiveRecord::Schema.define(version: 2019_10_02_023023) do
 
   add_foreign_key "customer_comments", "evaluates"
   add_foreign_key "maker_comments", "evaluates"
+  add_foreign_key "maker_comments", "makers"
   add_foreign_key "products", "makers"
 end

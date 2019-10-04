@@ -16,6 +16,7 @@ class Maker < ApplicationRecord
     on: :update
 
   has_many :products
+  has_many :maker_comments
 
   mount_uploader :image, MakerImageUploader
   mount_uploader :logo, MakerLogoUploader

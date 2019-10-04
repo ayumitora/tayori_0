@@ -38,12 +38,17 @@ table.table.table-hover
   = link_to '編集', edit_evaluate_path(id: @evaluate.id), class: 'btn btn-primary mr-3'
 
 
+- if maker_signed_in?
+  = form_with model: [@evaluate, @maker_comment], local: true do |f|
+    .form-group
+      = f.label :maker_comment
+      = f.text_field :content, class: 'form-control', id: 'product_name'
+    = f.submit nil, class: 'btn btn-outline-info btn-block'
 
-#maker_comments_area
-  == render partial: 'maker_comments/index', locals: { maker_comments: @maker_comments, evaluate: @evaluate }
-== render partial: 'maker_comments/form', locals: { maker_comment: @maker_comment, evaluate: @evaluate }
 
 
-#customer_comments_area
-  == render partial: 'customer_comments/index', locals: { customer_comments: @customer_comments, evaluate: @evaluate }
-== render partial: 'customer_comments/form', locals: { customer_comment: @customer_comment, evaluate: @evaluate }
+
+
+/ #customer_comments_area
+/   == render partial: 'customer_comments/index', locals: { customer_comments: @customer_comments, evaluate: @evaluate }
+/ == render partial: 'customer_comments/form', locals: { customer_comment: @customer_comment, evaluate: @evaluate }
