@@ -36,23 +36,19 @@ table.table.table-hover
   = link_to '編集', edit_evaluate_path(id: @evaluate.id), class: 'btn btn-primary mr-3'
 
 
-table.table.table-hover
-  tbody
-  - @maker_comments.each do |maker_comment|
-    tr
-      td= maker_comment
+
+- @maker_comments.each do |maker_comment|
+  p
+    = maker_comment.content
+    = link_to '編集', edit_evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id)
+    = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), method: :delete
+
+
 
 
 
 - if maker_signed_in?
-  = form_with model: [@evaluate, @maker_comment], local: true do |f|
-    = f.hidden_field :evaluate_id, value: @evaluate.id
-    .form-group
-      = f.label :maker_comment
-      = f.text_area :content, class: 'form-control', id: 'product_name'
-    = f.submit nil, class: 'btn btn-outline-info btn-block'
-
-
+  = render partial: 'maker_comments/form', locals: {evaluate: @evaluate, maker_comment: @maker_comment}
 
 
 

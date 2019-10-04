@@ -1,9 +1,6 @@
 class MakerCommentsController < ApplicationController
+  before_action :set_maker_comment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_maker!, only: [:edit, :create, :destroy]
-
-  def index
-    # @maker_comments = MakerComment.where(evaluate_id: params[:evaluate_id])
-  end
 
   def create
     @maker_comment = MakerComment.new(maker_comment_params)
@@ -14,14 +11,25 @@ class MakerCommentsController < ApplicationController
   end
 
   def edit
+  end
 
+  def update
+    @maker_comment.update!(maker_comment_params)
+    redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを編集しました"
   end
 
   def destroy
-
+    @maker_comment.destroy
+    redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを削除しました"
   end
 
+
   private
+
+  def set_maker_comment
+    @maker_comment = MakerComment.find(params[:id])
+  end
+
   def maker_comment_params
     params.require(:maker_comment).permit(:evaluate_id, :maker_id, :content)
   end

@@ -13,6 +13,9 @@ class CustomerCommentsController < ApplicationController
     end
   end
   private
+
+
+
   def customer_comment_params
     params.require(:customer_comment).permit(:evaluate_id, :content)
   end
