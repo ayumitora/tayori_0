@@ -31,18 +31,24 @@ table.table.table-hover
     tr
       th= Evaluate.human_attribute_name(:content)
       td= simple_format(h(@evaluate.content), {}, sanitize: false, wrapper_tag: "div")
-    tr
-      th= Evaluate.human_attribute_name(:comment)
-      td= @evaluate.comment
+
 - if customer_signed_in?
   = link_to '編集', edit_evaluate_path(id: @evaluate.id), class: 'btn btn-primary mr-3'
+
+
+table.table.table-hover
+  tbody
+  - @maker_comments.each do |maker_comment|
+    tr
+      td= maker_comment
+
 
 
 - if maker_signed_in?
   = form_with model: [@evaluate, @maker_comment], local: true do |f|
     .form-group
       = f.label :maker_comment
-      = f.text_field :content, class: 'form-control', id: 'product_name'
+      = f.text_area :content, class: 'form-control', id: 'product_name'
     = f.submit nil, class: 'btn btn-outline-info btn-block'
 
 

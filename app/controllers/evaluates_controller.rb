@@ -9,8 +9,9 @@ class EvaluatesController < ApplicationController
   def show
     @maker_comments = @evaluate.maker_comments
     @maker_comment = MakerComment.new
-    @customer_comments = @evaluate.customer_comments
-    @customer_comment = @evaluate.customer_comments.build
+    # @maker_comment.evaluate_id = @evaluate.id
+    # @customer_comments = @evaluate.customer_comments
+    # @customer_comment = @evaluate.customer_comments.build
   end
 
   def new

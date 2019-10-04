@@ -16,10 +16,12 @@ ActiveRecord::Schema.define(version: 2019_10_04_003510) do
   enable_extension "plpgsql"
 
   create_table "customer_comments", force: :cascade do |t|
-    t.bigint "evaluate_id"
-    t.text "content"
+    t.bigint "evaluate_id", null: false
+    t.bigint "customer_id", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_customer_comments_on_customer_id"
     t.index ["evaluate_id"], name: "index_customer_comments_on_evaluate_id"
   end
 
@@ -60,11 +62,11 @@ ActiveRecord::Schema.define(version: 2019_10_04_003510) do
   end
 
   create_table "maker_comments", force: :cascade do |t|
-    t.bigint "evaluate_id"
-    t.text "content"
+    t.bigint "evaluate_id", null: false
+    t.bigint "maker_id", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "maker_id"
     t.index ["evaluate_id"], name: "index_maker_comments_on_evaluate_id"
     t.index ["maker_id"], name: "index_maker_comments_on_maker_id"
   end
@@ -103,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_10_04_003510) do
     t.index ["maker_id"], name: "index_products_on_maker_id"
   end
 
+  add_foreign_key "customer_comments", "customers"
   add_foreign_key "customer_comments", "evaluates"
   add_foreign_key "maker_comments", "evaluates"
   add_foreign_key "maker_comments", "makers"
