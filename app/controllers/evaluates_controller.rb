@@ -4,13 +4,14 @@ class EvaluatesController < ApplicationController
 
   def index
     @evaluates = Evaluate.where(customer_id: params[:customer_id])
+    @customer = Customer.find(params[:customer_id])
   end
 
   def show
     @maker_comments = @evaluate.maker_comments
     @maker_comment = MakerComment.new
-    # @customer_comments = @evaluate.customer_comments
-    # @customer_comment = @evaluate.customer_comments.build
+    @customer_comments = @evaluate.customer_comments
+    @customer_comment = CustomerComment.new
   end
 
   def new

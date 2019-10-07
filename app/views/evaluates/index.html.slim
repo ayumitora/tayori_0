@@ -1,7 +1,7 @@
 
 / h2  #{@evaluate.customer.dispray_name}が評価したプロダクト一覧
-h2  評価されたプロダクト一覧
-- if customer_signed_in?
+h2  #{@customer.display_name}に評価されたプロダクト一覧
+- if @customer == current_customer
   =link_to '新たにプロダクトを評価する', makers_path,class: 'btn btn-outline-info btn-block'
 
 .mb-3
@@ -24,7 +24,7 @@ table.table.table-hover
         == render 'star_js', evaluate: evaluate, score_name: "", readonly_flug: true, tag: "#star-#{evaluate.id}"
 
       td
-        - if customer_signed_in?
+        - if evaluate.customer == current_customer
           = link_to '編集', edit_evaluate_path(evaluate), class: 'btn btn-primary mr-3'
           = link_to '削除', evaluate, method: :delete,
             data: { confirm: "プロダクト「#{evaluate.product.name}」の評価を削除します。よろしいですか？" },

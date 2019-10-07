@@ -3,8 +3,9 @@ h2 #{@evaluate.customer.display_name} による#{@evaluate.product.name}のレ�
 
 .nav.justify-content-end
   = link_to "#{@evaluate.customer.display_name} のレビュー一覧へ", evaluates_path(customer_id: @evaluate.customer_id)
-  - if customer_signed_in?
-    = link_to '編集', edit_evaluate_path(id: @evaluate.id), class: 'btn btn-primary mr-3'
+br
+  - if @evaluate.customer == current_customer
+    = link_to 'このレビューを編集', edit_evaluate_path(id: @evaluate.id)
 
 h1 評価の詳細
 
@@ -35,8 +36,11 @@ table.table.table-hover
       th= Evaluate.human_attribute_name(:content)
       td= simple_format(h(@evaluate.content), {}, sanitize: false, wrapper_tag: "div")
 
-
-- if @maker_comments[0]
+-if @maker_comments[0] == nil
+  .card style=("padding: 10px; margin-bottom: 10px;")
+    .card-text
+      p メーカーからのコメントはまだありません
+- elsif @maker_comments[0]
   .card style=("padding: 10px; margin-bottom: 10px;")
     .card-body
       .card-title
@@ -48,14 +52,31 @@ table.table.table-hover
             br
             br
             = link_to '編集', edit_evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), class: "card-link"
-            = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), method: :delete, class: "card-link"
+            = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "card-link"
             br
 
 - if maker_signed_in? && @maker_comments == []
   h5 この評価に対し、メーカーからのコメントを追加する:
   = render partial: 'maker_comments/form', locals: {evaluate: @evaluate, maker_comment: @maker_comment}
 
+- @customer_comments.each do |customer_comment|
+  .card style=("padding: 10px; margin-bottom: 10px;")
+    .card-body
+      .card-title
+        h5 #{customer_comment.customer.display_name}からのコメント:
+        p.card-text
+          = customer_comment.content
+          br
+          br
+          - if customer_comment.customer == current_customer
+            = link_to '編集', edit_evaluate_customer_comment_path(evaluate_id: @evaluate.id, id: customer_comment.id), class: "card-link"
+            = link_to '削除', evaluate_customer_comment_path(evaluate_id: @evaluate.id, id: customer_comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "card-link"
+          -else
+            = link_to 'このカスタマーのページへ', customer_path(id: customer_comment.customer_id), class: "card-link"
+          br
 
-/ #customer_comments_area
-/   == render partial: 'customer_comments/index', locals: { customer_comments: @customer_comments, evaluate: @evaluate }
-/ == render partial: 'customer_comments/form', locals: { customer_comment: @customer_comment, evaluate: @evaluate }
+
+
+- if customer_signed_in?
+  h5 コメントを追加する:
+  = render partial: 'customer_comments/form', locals: {evaluate: @evaluate, customer_comment: @customer_comment}
