@@ -5,11 +5,14 @@ class ProductsController < ApplicationController
   def index
     @products = Product.where(maker_id: params[:maker_id])
     @maker = Maker.find_by(id: params[:maker_id])
-    # @evaluates = Evaluate.where()
   end
 
   def show
-    @product_score = @product.evaluates.average(:rate).round(1)
+    if @product.evaluates.average(:rate) == nil
+      @product_score = 0.0
+    else
+      @product_score = @product.evaluates.average(:rate).round(1)
+    end
     @evaluates = Evaluate.where(product_id: params[:id])
   end
 

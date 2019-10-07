@@ -6,7 +6,6 @@ class CreateEvaluates < ActiveRecord::Migration[5.2]
       t.float :rate
       t.string :image
       t.text :content
-      t.text :comment
 
       t.timestamps
     end

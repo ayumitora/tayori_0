@@ -28,7 +28,7 @@ table.table.table-hover
       td= @product.evaluates.count
     tr
       th= Evaluate.human_attribute_name(:rate_average)
-      td= @product.evaluates.average(:rate).round(1)
+      td= @product_score
     tr
       th= Evaluate.human_attribute_name(:rate)
       td
