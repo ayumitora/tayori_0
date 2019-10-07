@@ -36,12 +36,12 @@ table.table.table-hover
   = link_to '編集', edit_evaluate_path(id: @evaluate.id), class: 'btn btn-primary mr-3'
 
 
-
-- @maker_comments.each do |maker_comment|
-  p
-    = maker_comment.content
-    = link_to '編集', edit_evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id)
-    = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), method: :delete
+.card style=("width: 18rem;") 
+  - @maker_comments.each do |maker_comment|
+    p.card-text
+      = maker_comment.content
+      = link_to '編集', edit_evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), class: "card-link"
+      = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), method: :delete, class: "card-link"
 
 
 

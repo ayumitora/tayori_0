@@ -1,9 +1,29 @@
-h2 メーカーコメントを編集
-
-= form_with model: [@maker_comment], url: {:action => :update}, local: true do |f|
+h3 この評価に対するメーカーコメントを編集
+= form_with model: [@maker_comment], url: {action: :update}, local: true do |f|
     = f.hidden_field :evaluate_id, value: @maker_comment.evaluate_id
     .form-group
       = f.label :content
       = f.text_area :content, class: 'form-control', id: 'product_name'
     = f.submit nil, class: 'btn btn-outline-info btn-block'
+br
+br
+table.table.table-sm
+  tbody
+    tr
+      th= Product.human_attribute_name(:name)
+      td= @maker_comment.evaluate.product.name
+    tr
+      th= Customer.human_attribute_name(:display_name)
+      td= @maker_comment.evaluate.customer.display_name
+    tr
+      th= Product.human_attribute_name(:image)
+      - if @maker_comment.evaluate.image.url.present?
+        td= image_tag @maker_comment.evaluate.image.url
+      - else
+        td= image_tag 'no_image.jpg'
+    tr
+      th= Evaluate.human_attribute_name(:content)
+      td= simple_format(h(@maker_comment.evaluate.content), {}, sanitize: false, wrapper_tag: "div")
+
+
 

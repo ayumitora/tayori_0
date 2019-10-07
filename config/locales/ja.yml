@@ -12,6 +12,8 @@ ja:
       product: プロダクト
       customer: カスタマー
       evaluate: レビュー
+      maker_comment: メーカーコメント
+      customer_comment: カスタマーコメント
     attributes:
       product:
         id: プロダクトID
@@ -61,6 +63,10 @@ ja:
         comment: コメント
         rate_average: 平均評価
         count: 評価数
+      maker_comment:
+        content: メーカーからのコメント
+      customer_comment:
+        content: カスタマーからのコメント
   date:
     abbr_day_names:
     - 日
