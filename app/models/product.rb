@@ -3,5 +3,4 @@ class Product < ApplicationRecord
   belongs_to :maker
   has_many :evaluates
   mount_uploader :image, ProductImageUploader
-
 end

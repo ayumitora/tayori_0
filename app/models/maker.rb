@@ -12,7 +12,7 @@ class Maker < ApplicationRecord
     format: /\A#{URI::regexp(%w(http https))}\z/
   validates :overview,
     presence: true,
-    length: { minimum: 1, maximum: 1000 },
+    length: { minimum: 1, maximum: 500 },
     on: :update
 
   has_many :products
