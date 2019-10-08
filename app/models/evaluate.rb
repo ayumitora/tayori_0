@@ -1,5 +1,6 @@
 class Evaluate < ApplicationRecord
-  after_save :grant_score
+  before_create :grant_score_10
+  after_destroy :minus_score_10
   belongs_to :customer
   belongs_to :product
   has_many :maker_comments, dependent: :destroy
@@ -8,9 +9,15 @@ class Evaluate < ApplicationRecord
 
   private
 
-  def grant_score
+  def grant_score_10
     customer = self.customer
     customer.score += 10
-    customer.save!
+    customer.save!
+  end
+
+  def minus_score_10
+    customer = self.customer
+    customer.score -= 10
+    customer.save!
   end
 end
