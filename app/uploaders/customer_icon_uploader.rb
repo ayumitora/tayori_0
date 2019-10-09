@@ -4,7 +4,7 @@ class CustomerIconUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 include CarrierWave::MiniMagick
 
-process :resize_to_limit => [200, 200] # 画像サイズの調整
+process :resize_to_limit => [100, 100] # 画像サイズの調整
 
   # Choose what kind of storage to use for this uploader:
   storage :file

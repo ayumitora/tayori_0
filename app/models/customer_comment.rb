@@ -1,6 +1,6 @@
 class CustomerComment < ApplicationRecord
-  # before_create :grant_score_3
-  # after_destroy :minus_score_3
+  before_create :grant_score_3
+  after_destroy :minus_score_3
   belongs_to :evaluate
   belongs_to :customer
   validates :content, presence: true
@@ -8,16 +8,14 @@ class CustomerComment < ApplicationRecord
   private
 
   def grant_score_3
-    customer = current_customer
-    if customer != self.customer
+    if self.customer != self.evaluate.customer
       customer.score += 3
       customer.save!
     end
   end
 
   def minus_score_3
-    customer = current_customer
-    if customer != self.customer
+    if self.customer != self.evaluate.customer
       customer.score -= 3
       customer.save!
     end
