@@ -1,9 +1,0 @@
-<ul>
-  <% customer_comments.each do |customer_comment| %>
-    <% if customer_comment.id.present? %>
-      <li>
-        <p><%= customer_comment.content %></p>
-      </li>
-    <% end %>
-  <% end %>
-</ul>

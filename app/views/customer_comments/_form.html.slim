@@ -1,7 +1,8 @@
 = form_with model: [evaluate, customer_comment], local: true do |f|
-    = f.hidden_field :evaluate_id, value: evaluate.id
-    .form-group
-      = f.text_area :content, class: 'form-control', id: 'product_name'
-    = f.submit nil, class: 'btn btn-outline-info btn-block'
+  == render 'layouts/error_messages', model: f.object
+  = f.hidden_field :evaluate_id, value: evaluate.id
+  .form-group
+    = f.text_area :content, class: 'form-control', id: 'product_name'
+  = f.submit nil, class: 'btn btn-outline-info btn-block'
 
 

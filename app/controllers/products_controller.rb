@@ -23,8 +23,11 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.maker_id = current_maker.id
-    @product.save!
-    redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を登録しました。"
+    if @product.save!
+      redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を登録しました。"
+    else
+      render :new
+    end
   end
 
   def edit
