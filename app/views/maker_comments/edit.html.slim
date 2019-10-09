@@ -2,12 +2,13 @@ h3 この評価に対するメーカーコメントを編集
 / == render partial: 'form', locals: {evaluate: @evaluate, maker_comment: @maker_comment}
 
 = form_with model: [@maker_comment], url: {action: :update}, local: true do |f|
-    = f.hidden_field :evaluate_id, value: @maker_comment.evaluate_id
-    .form-group
-      = f.label :content
-      = f.text_area :content, class: 'form-control', id: 'product_name'
-    = f.submit nil, class: 'btn btn-outline-info btn-block'
-    / パーシャル化したい
+  == render 'layouts/error_messages', model: f.object
+  = f.hidden_field :evaluate_id, value: @maker_comment.evaluate_id
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control', id: 'product_name'
+  = f.submit nil, class: 'btn btn-outline-info btn-block'
+  / パーシャル化したい
 
 br
 br

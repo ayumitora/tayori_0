@@ -10,10 +10,10 @@ class Maker < ApplicationRecord
     presence: true,
     on: :update,
     format: /\A#{URI::regexp(%w(http https))}\z/
-  validates :overview,
+
+    validates :overview,
     presence: true,
-    length: { minimum: 1, maximum: 500 },
-    on: :update
+    length: { maximum: 500 }
 
   has_many :products
   has_many :maker_comments

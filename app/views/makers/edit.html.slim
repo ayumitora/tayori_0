@@ -4,6 +4,7 @@ h1 メーカーの編集
   = link_to "「#{current_maker.name}」のプロダクト一覧へ", makers_path
 
 = form_with model: @maker, local: true do |f|
+  == render 'layouts/error_messages', model: f.object
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control', id: 'maker_name'

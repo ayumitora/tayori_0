@@ -5,9 +5,11 @@ class CustomerCommentsController < ApplicationController
   def create
     @customer_comment = CustomerComment.new(customer_comment_params)
     @customer_comment.customer = current_customer
-    @customer_comment.save!
-    redirect_to evaluate_url(id: @customer_comment.evaluate_id), notice: "カスタマーコメントを書き込みました"
-    # redirect_back fallback_location: request.referrer この書き方はnoticeを付与できない
+    if @customer_comment.save
+      redirect_to evaluate_url(id: @customer_comment.evaluate_id), notice: "カスタマーコメントを書き込みました"
+    else
+      redirect_to evaluate_url(id: @customer_comment.evaluate_id), notice: "空欄のままでは登録できません"
+    end
   end
 
   def edit

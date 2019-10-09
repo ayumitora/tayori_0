@@ -5,17 +5,24 @@ class MakerCommentsController < ApplicationController
   def create
     @maker_comment = MakerComment.new(maker_comment_params)
     @maker_comment.maker_id = current_maker.id
-    @maker_comment.save!
-    redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを書き込みました"
-    # redirect_back fallback_location: request.referrer この書き方はnoticeを付与できない
+    if @maker_comment.save
+      redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを書き込みました"
+    else
+      @evaluate = Evaluate.find(@maker_comment.evaluate_id)
+      render :'evaluate/show'
+      redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "空欄のままでは登録できません"
+    end      # redirect_back fallback_location: request.referrer この書き方はnoticeを付与できない
   end
 
   def edit
   end
 
   def update
-    @maker_comment.update!(maker_comment_params)
-    redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを編集しました"
+    if @maker_comment.update(maker_comment_params)
+      redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを編集しました"
+    else
+      render :edit
+    end
   end
 
   def destroy

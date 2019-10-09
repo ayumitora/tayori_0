@@ -15,15 +15,12 @@ class CustomersController < ApplicationController
   end
 
   def update
-    # binding.pry
-    @customer.update!(customer_params)
-    redirect_to customer_path, notice: "カスタマー「#{@customer.display_name}」を更新しました。"
+    if @customer.update(customer_params)
+      redirect_to customer_path, notice: "カスタマー「#{@customer.display_name}」を更新しました。"
+    else
+      render :edit
+    end
   end
-
-  # def destroy
-  #   @customer.destroy
-  #   redirect_to customers_url, notice: "カスタマー「#{@customer.name}」を削除しました。"
-  # end
 
 
   private

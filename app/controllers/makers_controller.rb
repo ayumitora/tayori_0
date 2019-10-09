@@ -9,22 +9,16 @@ class MakersController < ApplicationController
   def show
   end
 
-  # def new
-  # end
-
   def edit
   end
 
   def update
-    @maker.update!(maker_params)
-    redirect_to maker_url, notice: "メーカー「#{@maker.name}」を更新しました。"
+    if @maker.update(maker_params)
+      redirect_to maker_url, notice: "メーカー「#{@maker.name}」を更新しました。"
+    else
+      render :edit
+    end
   end
-
-  def destroy
-    @maker.destroy
-    redirect_to makers_url, notice: "メーカー「#{@maker.name}」を削除しました。"
-  end
-
 
   private
 

@@ -4,5 +4,5 @@ class MakerComment < ApplicationRecord
 
   validates :content,
     presence: true,
-    length: { minimum: 1, maximum: 2000 }
+    length: { maximum: 1000 }
 end
