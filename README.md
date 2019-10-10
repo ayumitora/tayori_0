@@ -32,8 +32,8 @@ https://docs.google.com/spreadsheets/d/1Trpj_YWD2ZEqywT9loTRFLXdm9lxE9ZoBvwuuC_K
 カラム定義
 https://docs.google.com/spreadsheets/d/1aXbMU4ErZDFsHpSgl0FdtkNYbrCzHLHk96YkrnVtOnU/edit?usp=sharing
 
-画面遷移図
-https://cacoo.com/diagrams/d5d1KvLMnnVK5hfz/4831F
+UIflow
+![uiflow](https://user-images.githubusercontent.com/44644840/66540655-8d856800-eb67-11e9-84a8-9845d18bd5c0.jpg)
 
 画面ワイヤーフレーム
 https://cacoo.com/diagrams/d5d1KvLMnnVK5hfz/9DA60
