@@ -36,7 +36,7 @@ table.table.table-hover
       th= Evaluate.human_attribute_name(:content)
       td= simple_format(h(@evaluate.content), {}, sanitize: false, wrapper_tag: "div")
 
--if @maker_comments[0] == nil
+-if @maker_comments == nil
   .card style=("padding: 10px; margin-bottom: 10px;")
     .card-text
       p メーカーからのコメントはまだありません
@@ -55,7 +55,7 @@ table.table.table-hover
             = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "card-link"
             br
 
-- if maker_signed_in? && @maker_comments == []
+- if ( current_maker == @maker_comment.maker_id ) && ( @maker_comments == [] )
   h5 この評価に対し、メーカーからのコメントを追加する:
   = render partial: 'maker_comments/form', locals: {evaluate: @evaluate, maker_comment: @maker_comment}
 

@@ -1,0 +1,17 @@
+javascript:
+  $(document).on('turbolinks:load', function() {
+    $('#{tag}').raty({
+      size: 36,
+      starOff:  "#{asset_path('star-off.png')}",
+      starOn : "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      score: "#{evaluate.rate}",
+      readOnly: "#{readonly_flug}",
+      scoreName: "#{score_name}"
+    });
+  });
+
+
+
+
