@@ -1,4 +1,3 @@
-
 h2 #{@evaluate.customer.display_name} による#{@evaluate.product.name}のレビュー
 
 .nav.justify-content-end
@@ -55,7 +54,7 @@ table.table.table-hover
             = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: maker_comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "card-link"
             br
 
-- if ( current_maker == @maker_comment.maker_id ) && ( @maker_comments == [] )
+- if ( current_maker == @maker ) && ( @maker_comments == [] )
   h5 この評価に対し、メーカーからのコメントを追加する:
   = render partial: 'maker_comments/form', locals: {evaluate: @evaluate, maker_comment: @maker_comment}
 

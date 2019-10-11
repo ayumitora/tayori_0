@@ -8,12 +8,14 @@ class MakerCommentsController < ApplicationController
     if @maker_comment.save
       redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを書き込みました"
     else
-      @evaluate = Evaluate.find(@maker_comment.evaluate_id)
+      @evaluate = Evaluate.find(params[:evaluate_id])
       @customer_comments = @evaluate.customer_comments
       @maker_comment.maker_id = current_maker.id
-      @maker_comment = MakerComment.new
-      render "evaluates/show"
-      # redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "空欄のままでは登録できません"
+      @maker = current_maker
+      # flash[:alert] = 'コメントを入力してください。'
+      flash[:alert] = @maker_comment.errors.full_messages
+      redirect_back fallback_location: @evaluate.maker_comments
+           # redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "空欄のままでは登録できません"
     end      # redirect_back fallback_location: request.referrer この書き方はnoticeを付与できない
   end
 

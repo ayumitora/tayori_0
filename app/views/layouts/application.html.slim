@@ -27,6 +27,10 @@ html
     .container
       = link_to '戻る', 'javascript:history.back()'
       - if flash.notice.present?
-        .alert.alert-succsess= flash.notice
+        .alert.alert-succsess
+          = flash.notice
+      - if flash.alert.present?
+        .alert.alert-warning
+          = flash.alert
 
       = yield

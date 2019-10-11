@@ -8,6 +8,7 @@ class EvaluatesController < ApplicationController
   end
 
   def show
+    @maker = current_maker
     @maker_comments = @evaluate.maker_comments
     @maker_comment = MakerComment.new
     @customer_comments = @evaluate.customer_comments
