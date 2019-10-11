@@ -11,20 +11,20 @@ h1 評価の詳細
 table.table.table-hover
   tbody
     tr
-      th= Product.human_attribute_name(:name)
-      td= @evaluate.product.name
+      th= Maker.human_attribute_name(:name)
+      td= @evaluate.product.maker.name
     tr
       th= Product.human_attribute_name(:image)
       td= image_tag @evaluate.product.image.url
     tr
-      th= Customer.human_attribute_name(:display_name)
-      td= @evaluate.customer.display_name
-    tr
-      th= Product.human_attribute_name(:image)
+      th= Evaluate.human_attribute_name(:image)
       - if @evaluate.image.url.present?
         td= image_tag @evaluate.image.url
       - else
         td= image_tag 'no_image.jpg'
+    tr
+      th= Customer.human_attribute_name(:display_name)
+      td= @evaluate.customer.display_name
     tr
       th= Evaluate.human_attribute_name(:rate)
       td
@@ -57,7 +57,8 @@ table.table.table-hover
 - if ( current_maker == @maker ) && ( @maker_comments == [] )
   h5 この評価に対し、メーカーからのコメントを追加する:
   = render partial: 'maker_comments/form', locals: {evaluate: @evaluate, maker_comment: @maker_comment}
-
+br
+br
 - @customer_comments.each do |customer_comment|
   .card style=("padding: 10px; margin-bottom: 10px;")
     .card-body

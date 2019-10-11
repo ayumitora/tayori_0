@@ -27,10 +27,12 @@ html
     .container
       = link_to '戻る', 'javascript:history.back()'
       - if flash.notice.present?
-        .alert.alert-succsess
+        <div class="alert alert-success" role="alert">
           = flash.notice
+        </div>
+        / なぜかクラスが適応されないためerbで記述
       - if flash.alert.present?
         .alert.alert-warning
-          = flash.alert
+          = flash.alert.shift
 
       = yield

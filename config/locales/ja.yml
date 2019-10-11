@@ -19,7 +19,7 @@ ja:
         id: プロダクトID
         name: プロダクト名
         price: 参考価格
-        image: 画像
+        image: プロダクト画像
         season: 創作期
         created_at: 登録日時
         updated_at: 更新日時
@@ -58,7 +58,7 @@ ja:
       evaluate:
         id: レビューID
         rate: 星
-        image: 画像
+        image: 使用画像
         content: 感想
         comment: コメント
         rate_average: 平均評価
