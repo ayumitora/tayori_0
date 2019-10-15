@@ -19,6 +19,9 @@ class Evaluate < ApplicationRecord
     customer = self.customer
     customer.score += 10
     customer.save!
+    if customer.score >= 100
+      ScoreMailer.score_mail(customer).deliver
+    end
   end
 
   def minus_score_10
