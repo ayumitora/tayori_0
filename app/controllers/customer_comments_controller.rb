@@ -8,7 +8,9 @@ class CustomerCommentsController < ApplicationController
     if @customer_comment.save
       redirect_to evaluate_url(id: @customer_comment.evaluate_id), notice: "カスタマーコメントを書き込みました"
     else
-      redirect_to evaluate_url(id: @customer_comment.evaluate_id), notice: "空欄のままでは登録できません"
+      @evaluate = @customer_comment.evaluate
+      flash[:alert] = @customer_comment.errors.full_messages
+      redirect_back fallback_location: @evaluate.customer_comments
     end
   end
 
@@ -16,8 +18,13 @@ class CustomerCommentsController < ApplicationController
   end
 
   def update
-    @customer_comment.update!(customer_comment_params)
-    redirect_to evaluate_url(id: @customer_comment.evaluate_id), notice: "カスタマーコメントを編集しました"
+    if @customer_comment.update(customer_comment_params)
+      redirect_to evaluate_url(id: @customer_comment.evaluate_id), notice: "カスタマーコメントを編集しました"
+    else
+      @evaluate = @customer_comment.evaluate
+      flash[:alert] = @customer_comment.errors.full_messages
+      redirect_back fallback_location: @evaluate.customer_comments
+    end
   end
 
   def destroy

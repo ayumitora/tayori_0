@@ -5,10 +5,13 @@ class CustomerComment < ApplicationRecord
   belongs_to :evaluate
   belongs_to :customer
 
-  validates :content, presence: true
+  validates :content,
+    presence: true,
+    length: { maximum: 1000 }
 
   private
 
+  
   def grant_score_3
     if self.customer != self.evaluate.customer
       customer.score += 3
