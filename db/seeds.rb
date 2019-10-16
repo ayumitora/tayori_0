@@ -69,14 +69,14 @@ Product.create!(
     {
       maker_id: 1,
       name: "宝ぶくろ",
-      price: 7000,
+      price: "5500~7000円",
       image: open("#{Rails.root}/db/seed_fixtures/takara.jpg"),
       season: "20017年ごろ"
     },
     {
       maker_id: 1,
       name: "餅T",
-      price: 16000,
+      price: "8000~16000円",
       image: open("#{Rails.root}/db/seed_fixtures/moti_1.jpg"),
       season: "20018年"
     },
@@ -87,45 +87,52 @@ Product.create!(
       image: open("#{Rails.root}/db/seed_fixtures/tabi.jpg"),
       season: "20010年〜"
     },
+    # {
+    #   maker_id: 1,
+    #   name: "ずた袋",
+    #   price: "8000円",
+    #   image: open("#{Rails.root}/db/seed_fixtures/zuta.jpg"),
+    #   season: "20017年"
+    # },
     {
       maker_id: 1,
       name: "反ずぼん",
-      price: 19000,
+      price: "17500~19000円",
       image: open("#{Rails.root}/db/seed_fixtures/unnamed.jpg"),
       season: "20017年"
     },
     {
       maker_id: 2,
       name: "あそか石鹸（プレーン）",
-      price: 2200,
+      price: "2200円",
       image: open("#{Rails.root}/db/seed_fixtures/soap_1.jpg"),
       season: "20017年ごろ"
     },
     {
       maker_id: 2,
       name: "ソマチッド",
-      price: 17000,
+      price: "17000円＋税",
       image: open("#{Rails.root}/db/seed_fixtures/soma_1.jpg"),
       season: "カンブリア紀以前"
     },
     {
       maker_id: 3,
       name: "スミセン靴下(丸先）",
-      price: 2500,
+      price: "2500円",
       image: open("#{Rails.root}/db/seed_fixtures/sox.jpg"),
       season: "2010"
     },
     {
       maker_id: 3,
       name: "５本指スミセン靴下",
-      price: 3000,
+      price: "3300円（税込）",
       image: open("#{Rails.root}/db/seed_fixtures/yubi_sox.jpg"),
       season: "2010"
     },
     {
       maker_id: 3,
       name: "もこもこスミセン靴下",
-      price: 3000,
+      price: "3000円",
       image: open("#{Rails.root}/db/seed_fixtures/moko_sox.jpg"),
       season: "2010"
     }
@@ -170,7 +177,7 @@ Evaluate.create!(
       product_id: 1,
       customer_id: 1,
       rate: 3.5,
-      image: open("#{Rails.root}/db/seed_fixtures/fukuro_naka.jpg"),
+      image: open("#{Rails.root}/db/seed_fixtures/takatra_1.jpg"),
       content: "可愛いのですがあまり物は入りません。"
     }
   ]
