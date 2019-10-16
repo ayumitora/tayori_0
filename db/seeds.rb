@@ -175,7 +175,7 @@ Evaluate.create!(
   [
     {
       product_id: 1,
-      customer_id: 1,
+      customer_id: 2,
       rate: 3.5,
       image: open("#{Rails.root}/db/seed_fixtures/takatra_1.jpg"),
       content: "可愛いのですがあまり物は入りません。"
