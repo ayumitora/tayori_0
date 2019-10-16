@@ -89,13 +89,6 @@ Product.create!(
     },
     {
       maker_id: 1,
-      name: "ずた袋",
-      price: 8000,
-      image: open("#{Rails.root}/db/seed_fixtures/zuta.jpg"),
-      season: "20017年"
-    },
-    {
-      maker_id: 1,
       name: "反ずぼん",
       price: 19000,
       image: open("#{Rails.root}/db/seed_fixtures/unnamed.jpg"),
