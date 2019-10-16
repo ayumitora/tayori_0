@@ -48,8 +48,9 @@ table.table.table-hover
           = @maker_comments[0].content
           br
           br
-          = link_to '編集', edit_evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: @maker_comments[0].id), class: "card-link"
-          = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: @maker_comments[0].id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "card-link"
+          - if current_maker == @maker_comments[0].maker
+            = link_to '編集', edit_evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: @maker_comments[0].id), class: "card-link"
+            = link_to '削除', evaluate_maker_comment_path(evaluate_id: @evaluate.id, id: @maker_comments[0].id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "card-link"
 
 - if current_maker == @maker && @maker_comments == [] && maker_signed_in?
   h5 この評価に対し、メーカーからのコメントを追加する:
