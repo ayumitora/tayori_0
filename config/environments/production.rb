@@ -94,4 +94,7 @@ Rails.application.configure do
   #herokuエラーにより追記
   config.assets.initialize_on_precompile = false
 
+  config.action_mailer.default_url_options = { host: 'https://tayori.herokuapp.com/'}
+  config.action_mailer.delivery_method = :letter_opener_web
+
 end
