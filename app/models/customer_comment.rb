@@ -16,6 +16,10 @@ class CustomerComment < ApplicationRecord
     if self.customer != self.evaluate.customer
       customer.score += 3
       customer.save!
+      if customer.score >= 100
+        maker = self.evaluate.product.maker
+        ScoreMailer.score_mail(customer, maker).deliver
+      end
     end
   end
 
