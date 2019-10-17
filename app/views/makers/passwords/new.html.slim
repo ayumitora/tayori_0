@@ -1,11 +1,12 @@
 h2
-  | Forgot your password?
+  | パスワードを忘れた方
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
-    = f.label :email
+    = f.label :mail
     br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder:"登録しているメールアドレス"
+    br
   .actions
-    = f.submit "Send me reset password instructions"
+    = f.submit "パスワードのリセット手順を送信", class: "btn btn-outline-secondary btn-block"
 = render "makers/shared/links"

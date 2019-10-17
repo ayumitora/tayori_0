@@ -4,11 +4,10 @@ class Customer < ApplicationRecord
 
   mount_uploader :icon, CustomerIconUploader
 
-  has_many :evaluates
+  has_many :evaluates, dependent: :destroy
   has_many :products, through: :evaluates, dependent: :destroy
 
   validates :display_name, presence: true, on: :update
   validates :full_name, presence: true, on: :update
   validates :residence, presence: true, on: :update
-
 end

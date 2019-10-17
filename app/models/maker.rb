@@ -15,8 +15,8 @@ class Maker < ApplicationRecord
     presence: true,
     length: { maximum: 500 }
 
-  has_many :products
-  has_many :maker_comments
+  has_many :products, dependent: :destroy
+  has_many :maker_comments, dependent: :destroy
 
   mount_uploader :image, MakerImageUploader
   mount_uploader :logo, MakerLogoUploader

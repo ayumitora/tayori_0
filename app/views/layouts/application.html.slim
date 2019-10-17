@@ -15,19 +15,19 @@ html
         span class="navbar-toggler-icon"
 
       div class="collapse navbar-collapse" id="navbarSupportedContent"
-        ul class="navbar-nav mr-auto"
+        ul class="navbar-nav mr-auto list-group-flush"
           div class="nav-item active"
             - if maker_signed_in?
-              li = link_to "「#{current_maker.name}」のマイページ", maker_path(current_maker)
-              li = link_to "メーカー「#{current_maker.name}」をログアウト", destroy_maker_session_path, method: :delete
+              li = link_to "作り手「#{current_maker.name}」のマイページ", maker_path(current_maker)
+              li = link_to "ログアウト", destroy_maker_session_path, method: :delete
             - elsif customer_signed_in?
-              li = link_to "「#{current_customer.display_name}」のマイページ", customer_path(current_customer)
-              li = link_to "カスタマー「#{current_customer.display_name}」をログアウト", destroy_customer_session_path, method: :delete
+              li = link_to "使う人「#{current_customer.display_name}」のマイページ", customer_path(current_customer)
+              li = link_to "ログアウト", destroy_customer_session_path, method: :delete
             - else
-              li = link_to 'メーカーログイン', new_maker_session_path
-              li = link_to 'メーカーサインアップ', new_maker_registration_path
-              li = link_to 'カスタマーログイン', new_customer_session_path
-              li = link_to 'カスタマーサインアップ', new_customer_registration_path
+              li = link_to '作り手 ログイン', new_maker_session_path
+              li = link_to '作り手 新規登録', new_maker_registration_path
+              li = link_to '使う人 ログイン', new_customer_session_path
+              li = link_to '使う人 新規登録', new_customer_registration_path
 
     .container.mb-5
       = link_to '＜', 'javascript:history.back()'

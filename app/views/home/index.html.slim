@@ -8,9 +8,9 @@ div class="jumbotron"
     | 使う人の声から生まれるモノがある。
     br
     br
-    =link_to '使う人の声をとどける', new_customer_registration_path,class: 'btn btn-lg btn-outline-success'
+    =link_to '使う人の たよりをとどける', new_customer_registration_path,class: 'btn btn-lg btn-outline-success'
     .nav.justify-content-end
-    =link_to '作るひとが声をあつめる', new_customer_registration_path,class: 'btn btn-lg btn-outline-warning'
+    =link_to '作るひとが たよりをあつめる', new_maker_registration_path,class: 'btn btn-lg btn-outline-warning'
 - if current_customer == nil && current_maker == nil
   =link_to 'ちょっとのぞいてみる', makers_path,class: 'btn btn-outline-danger btn-block'
 br
@@ -20,7 +20,7 @@ div class="row marketing"
     p 0.5 〜 5.0 までの星評価で評価を可視化。
     br
     h4 使う人達のスタイリング、経年変化情報を交換
-    p 作り手は、自分が作った品物が複数回使用され、何度も洗濯された後の姿を見ることは殆どありません。
+    p 作り手はもちろん、これから使おうとする人は、その品物が複数回使用された後の見ることは殆どありません。
     br
     h4 使い手同士での情報交換に
     p 使い手のコメント欄はログインしていない人へは非公開。SNSとは異なるクローズドな場です。

@@ -1,42 +1,45 @@
 h2
-  | Edit 
-  = resource_name.to_s.humanize
+  | 作り手としてのログイン情報を編集する
+  / = resource_name.to_s.humanize
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
-    = f.label :email
+    = f.label :mail
     br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+    br
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div
-      | Currently waiting confirmation for: 
+      | Currently waiting confirmation for:
       = resource.unconfirmed_email
   .field
     = f.label :password
     i
-      | (leave blank if you don't want to change it)
+      | (パスワードを変更しない場合は空欄のまま更新してください)
     br
-    = f.password_field :password, autocomplete: "new-password"
+    = f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder:"新しいパスワード入力"
     - if @minimum_password_length
-      br
       em
         = @minimum_password_length
-        |  characters minimum
+        |  文字以上
+  br
   .field
     = f.label :password_confirmation
     br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder:"新しいパスワードを再入力"
   .field
     = f.label :current_password
     i
-      | (we need your current password to confirm your changes)
+      | (変更を確認するには現在のパスワードが必要です)
     br
-    = f.password_field :current_password, autocomplete: "current-password"
+    = f.password_field :current_password, autocomplete: "current-password", class: 'form-control'
+    br
   .actions
-    = f.submit "Update"
+    = f.submit "更新", class: "btn btn-outline-warning btn-block"
+br
+br
 h3
-  | Cancel my account
+  | アカウントの削除
 p
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+  | 退会しますか？
+  = button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "全てのデータが削除されます。よろしいですか？" }, method: :delete, class: "btn btn-outline-danger"

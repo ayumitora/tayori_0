@@ -1,22 +1,22 @@
 h2
-  | Change your password
+  | パスワードの変更
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
   = f.hidden_field :reset_password_token
   .field
-    = f.label :password, "New password"
+    = f.label :password, "新しいパスワード"
     br
     - if @minimum_password_length
       em
         | (
         = @minimum_password_length
-        |  characters minimum)
+        |  文字以上)
       br
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
+    = f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control'
   .field
-    = f.label :password_confirmation, "Confirm new password"
+    = f.label :password_confirmation, "新しいパスワードを確認"
     br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder:"新しいパスワードをもう一度入力"
   .actions
-    = f.submit "Change my password"
+    = f.submit "パスワード変更"
 = render "makers/shared/links"
