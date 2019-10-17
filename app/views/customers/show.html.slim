@@ -30,9 +30,9 @@ table.table.table-hover
 
 .nav.justify-content-end
   -if current_customer == @customer
-    = link_to 'カスタマー情報の編集', edit_customer_path(id: @customer.id), class: 'btn btn-primary mr-3'
+    = link_to 'カスタマー情報の編集', edit_customer_path(id: @customer.id), class: 'btn btn-outline-primary mr-3'
 
-    = link_to 'ログイン情報を変更、アカウントの削除', edit_customer_registration_path, class: 'btn btn-primary mr-3'
+    = link_to 'ログイン情報を変更、アカウントの削除', edit_customer_registration_path, class: 'btn btn-outline-warning mr-3'
 
 
 / 改行があるばあい、      td= simple_format(h(@customer.price), {}, sanitize: false, wrapper_tag: "div")

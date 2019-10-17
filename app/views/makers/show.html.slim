@@ -1,12 +1,12 @@
 h2 『#{@maker.name}』 の登録情報
 
+- if current_maker == @maker
+  =link_to 'プロダクト新規登録', new_product_path,class: 'btn btn-outline-info btn-block'
+
 .nav.justify-content-end
   = link_to   = link_to "#{@maker.name} のプロダクト一覧へ", products_path(maker_id: @maker.id)
 table.table.table-hover
   tbody
-    tr
-      th= Maker.human_attribute_name(:id)
-      td= @maker.id
     tr
       th= Maker.human_attribute_name(:name)
       td= @maker.name

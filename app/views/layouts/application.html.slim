@@ -5,33 +5,41 @@ html
       | TAYORI
     = csrf_meta_tags
     meta name="viewport" content="width=device-width"
-    / ↑diverより
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .app-title.navber.navber-expand-md.navber-light.bg-light
-      .navber-brand TAYORI
-      - if maker_signed_in?
-        li = link_to "「#{current_maker.name}」のマイページ", maker_path(current_maker)
-        li = link_to "メーカー「#{current_maker.name}」をログアウト", destroy_maker_session_path, method: :delete
-      - elsif customer_signed_in?
-        li = link_to "「#{current_customer.display_name}」のマイページ", customer_path(current_customer)
-        li = link_to "カスタマー「#{current_customer.display_name}」をログアウト", destroy_customer_session_path, method: :delete
-      - else
-        li = link_to 'メーカーログイン', new_maker_session_path
-        li = link_to 'メーカーサインアップ', new_maker_registration_path
-        li = link_to 'カスタマーログイン', new_customer_session_path
-        li = link_to 'カスタマーサインアップ', new_customer_registration_path
+    nav class="navbar navbar-expand-lg navbar-light bg-light"
+      a class="navbar-brand" href="/" TAYORI
+      button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        span class="navbar-toggler-icon"
 
-    .container
-      = link_to '戻る', 'javascript:history.back()'
+      div class="collapse navbar-collapse" id="navbarSupportedContent"
+        ul class="navbar-nav mr-auto"
+          div class="nav-item active"
+            - if maker_signed_in?
+              li = link_to "「#{current_maker.name}」のマイページ", maker_path(current_maker)
+              li = link_to "メーカー「#{current_maker.name}」をログアウト", destroy_maker_session_path, method: :delete
+            - elsif customer_signed_in?
+              li = link_to "「#{current_customer.display_name}」のマイページ", customer_path(current_customer)
+              li = link_to "カスタマー「#{current_customer.display_name}」をログアウト", destroy_customer_session_path, method: :delete
+            - else
+              li = link_to 'メーカーログイン', new_maker_session_path
+              li = link_to 'メーカーサインアップ', new_maker_registration_path
+              li = link_to 'カスタマーログイン', new_customer_session_path
+              li = link_to 'カスタマーサインアップ', new_customer_registration_path
+
+    .container.mb-5
+      = link_to '＜', 'javascript:history.back()'
       - if flash.notice.present?
         .alert.alert-success
           = flash.notice
 
       - if flash.alert.present?
         .alert.alert-warning
-          = flash.alert.shift
+          = flash.alert
 
       = yield
+
+    footer class="footer text-center bg-light"
+      p &copy; AYUMI ARAI 2019
