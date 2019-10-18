@@ -33,10 +33,8 @@ https://docs.google.com/spreadsheets/d/1Trpj_YWD2ZEqywT9loTRFLXdm9lxE9ZoBvwuuC_K
 https://docs.google.com/spreadsheets/d/1aXbMU4ErZDFsHpSgl0FdtkNYbrCzHLHk96YkrnVtOnU/edit?usp=sharing
 
 UIflow
-![uiflow](https://user-images.githubusercontent.com/44644840/66540655-8d856800-eb67-11e9-84a8-9845d18bd5c0.jpg)
+![tayori_UIflow](https://user-images.githubusercontent.com/44644840/67074967-3580de00-f1c5-11e9-957e-29b620f9dded.jpg)
 
-画面ワイヤーフレーム
-https://cacoo.com/diagrams/d5d1KvLMnnVK5hfz/9DA60
 
 使用予定Gem
 carrierwave
