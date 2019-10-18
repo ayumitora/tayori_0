@@ -96,5 +96,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'tayori.herokuapp.com'}
   config.action_mailer.delivery_method = :letter_opener_web
+    # ↑ローカルで使用する際は上の二行をコメントする
 
 end

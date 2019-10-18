@@ -147,7 +147,7 @@ Customer.create!(
       email: "ayumitora33@gmail.com",
       password: "tokitoki",
       icon: open("#{Rails.root}/db/seed_fixtures/ayumi.jpg"),
-      score: "300",
+      score: "80",
       residence: "東京都"
     },
     {
