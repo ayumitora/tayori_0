@@ -13,7 +13,10 @@
     - @makers.each do |maker|
       tr
         td= link_to maker.name, maker
-        td= maker.overview.truncate(40)
+        -if maker.overview == nil
+          td= "未入力"
+        -else
+          td= maker.overview.truncate(40)
         td
           = link_to 'プロダクト一覧へ', products_path(maker_id: maker.id), class: 'btn btn-primary mr-3'
     end

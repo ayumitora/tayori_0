@@ -1,3 +1,8 @@
+-if maker_signed_in?
+  =link_to 'ログインしています。マイページへ', maker_path(id: current_maker.id),class: 'btn btn-outline-danger btn-block'
+-elsif customer_signed_in?
+  =link_to 'ログインしています。マイページへ', customer_path(id: current_customer.id),class: 'btn btn-outline-danger btn-block'
+br
 div class="jumbotron"
   h3 class="display-4"
     | みんなの ’おたより’ を
@@ -6,10 +11,12 @@ div class="jumbotron"
   p class="lead"
     br
     | 使う人の声から生まれるモノがある。
+  - if current_customer == nil && current_maker == nil
     br
-    br
+
     =link_to '使う人の たよりをとどける', new_customer_registration_path,class: 'btn btn-lg btn-outline-success'
-    .nav.justify-content-end
+    br
+    br
     =link_to '作るひとが たよりをあつめる', new_maker_registration_path,class: 'btn btn-lg btn-outline-warning'
 - if current_customer == nil && current_maker == nil
   =link_to 'ちょっとのぞいてみる', makers_path,class: 'btn btn-outline-danger btn-block'

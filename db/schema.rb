@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_023023) do
 
   create_table "customers", force: :cascade do |t|
     t.string "display_name", default: "未設定"
-    t.string "full_name", default: "未設定"
+    t.string "full_name", default: ""
     t.string "icon"
     t.integer "score", default: 0
     t.string "residence", default: "未設定"

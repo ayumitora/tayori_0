@@ -13,7 +13,8 @@ class Maker < ApplicationRecord
 
     validates :overview,
     presence: true,
-    length: { maximum: 500 }
+    on: :update,
+    length: { maximum: 1000 }
 
   has_many :products, dependent: :destroy
   has_many :maker_comments, dependent: :destroy

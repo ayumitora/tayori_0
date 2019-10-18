@@ -5,7 +5,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
     create_table :customers do |t|
 
       t.string :display_name, default: "未設定"
-      t.string :full_name, default: "未設定"
+      t.string :full_name, null: false, default: ""
       t.string :icon
       t.integer :score, default: 0
       t.string :residence, default: "未設定"

@@ -45,6 +45,8 @@ h2  このプロダクトの評価一覧
 table.table.table-hover
   thead.thead-defolt
     tr
+      -if maker_signed_in?
+        th= Customer.human_attribute_name(:full_name)
       th= Customer.human_attribute_name(:display_name)
       th= Product.human_attribute_name(:created_at)
       th= Evaluate.human_attribute_name(:rate)
@@ -52,9 +54,11 @@ table.table.table-hover
   tbody
   - @evaluates.each do |evaluate|
     tr
+      -if maker_signed_in?
+        td= evaluate.customer.full_name
       td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
             / td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
-      td= evaluate.product.created_at
+      td= evaluate.product.created_at.strftime("%Y-%m-%d %H:%M")
       td
         = evaluate.rate
         | <div id="star-#{evaluate.id}">

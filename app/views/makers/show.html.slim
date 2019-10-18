@@ -16,10 +16,12 @@ table.table.table-hover
     tr
       th= Maker.human_attribute_name(:overview)
       td= simple_format(h(@maker.overview), {}, sanitize: false, wrapper_tag: "div")
-      / td= @maker.overview
     tr
       th= Maker.human_attribute_name(:logo)
-      td= image_tag @maker.logo.url
+      - if @maker.logo.url.present?
+        td= image_tag @maker.logo.url
+      - else
+        td= image_tag 'no_image.jpg'
     tr
       th= Maker.human_attribute_name(:image)
       - if @maker.image.url.present?
@@ -34,6 +36,3 @@ table.table.table-hover
   - if current_maker == @maker
     = link_to 'メーカー情報の編集', edit_maker_path(id: @maker.id), class: 'btn btn-primary mr-3'
     = link_to 'ログイン情報を変更、アカウントの削除', edit_maker_registration_path, class: 'btn btn-primary mr-3'
-
-/ 改行があるばあい、      td= simple_format(h(@maker.price), {}, sanitize: false, wrapper_tag: "div")
-  のように書くこと
