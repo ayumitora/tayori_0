@@ -1,17 +1,15 @@
 h2 『#{@customer.display_name}』 の登録情報
 -if customer_signed_in?
-  =link_to '新たにをレビューを登録する', makers_path,class: 'btn btn-outline-info btn-block'
+  =link_to '新たに評価を登録する', makers_path,class: 'btn btn-outline-info btn-block'
 
 .nav.justify-content-end
-  = link_to "#{@customer.display_name} のレビュー一覧へ", evaluates_path(customer_id: @customer.id)
+  = link_to "#{@customer.display_name} の評価一覧へ", evaluates_path(customer_id: @customer.id)
 table.table.table-hover
   tbody
-    tr
-      th= Customer.human_attribute_name(:id)
-      td= @customer.id
-    tr
-      th= Customer.human_attribute_name(:full_name)
-      td= @customer.full_name
+    -if maker_signed_in?
+      tr
+        th= Customer.human_attribute_name(:full_name)
+        td= @customer.full_name
     tr
       th= Customer.human_attribute_name(:display_name)
       td= @customer.display_name
@@ -30,9 +28,9 @@ table.table.table-hover
 
 .nav.justify-content-end
   -if current_customer == @customer
-    = link_to 'カスタマー情報の編集', edit_customer_path(id: @customer.id), class: 'btn btn-primary mr-3'
+    = link_to 'カスタマー情報の編集', edit_customer_path(id: @customer.id), class: 'btn btn-outline-primary mr-3'
 
-    = link_to 'ログイン情報を変更、アカウントの削除', edit_customer_registration_path, class: 'btn btn-primary mr-3'
+    = link_to 'ログイン情報を変更、アカウントの削除', edit_customer_registration_path, class: 'btn btn-outline-warning mr-3'
 
 
 / 改行があるばあい、      td= simple_format(h(@customer.price), {}, sanitize: false, wrapper_tag: "div")

@@ -11,7 +11,7 @@ ja:
       maker: メーカー
       product: プロダクト
       customer: カスタマー
-      evaluate: レビュー
+      evaluate: 評価
       maker_comment: メーカーコメント
       customer_comment: カスタマーコメント
     attributes:
@@ -28,7 +28,7 @@ ja:
         id: メーカーID
         name: メーカー名
         overview: 概要
-        mail: メールアドレス
+        email: メールアドレス
         password: パスワード
         current_password: 現在のパスワード
         password_confirmation: 確認用パスワード

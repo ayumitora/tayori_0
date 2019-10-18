@@ -16,3 +16,18 @@
  */
 
 @import "bootstrap";
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+a {
+    color:#CC0000;
+}
+
+footer{
+    margin-top: auto;
+}

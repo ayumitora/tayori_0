@@ -13,14 +13,17 @@
     - @makers.each do |maker|
       tr
         td= link_to maker.name, maker
-        td= maker.overview.truncate(40)
+        -if maker.overview == nil
+          td= "未入力"
+        -else
+          td= maker.overview.truncate(40)
         td
           = link_to 'プロダクト一覧へ', products_path(maker_id: maker.id), class: 'btn btn-primary mr-3'
     end
 
 - unless customer_signed_in?
 
-  h1 メーカー一覧
+  h1 作り手一覧
 
   .mb-3
   table.table.table-hover
@@ -35,8 +38,6 @@
         td= link_to maker.name, maker
         td= maker.created_at
         td
-          = link_to '編集', edit_maker_path(maker), class: 'btn btn-primary mr-3'
-          = link_to '削除', maker, method: :delete, data: { confirm: "メーカー「#{maker.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
-          = link_to '詳細', maker_path(maker), class: 'btn btn-primary mr-3'
+          = link_to 'プロダクト一覧へ', products_path(maker_id: maker.id), class: 'btn btn-primary mr-3'
 
     end

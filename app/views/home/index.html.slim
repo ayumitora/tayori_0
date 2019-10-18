@@ -1,22 +1,34 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+-if maker_signed_in?
+  =link_to 'ログインしています。マイページへ', maker_path(id: current_maker.id),class: 'btn btn-outline-danger btn-block'
+-elsif customer_signed_in?
+  =link_to 'ログインしています。マイページへ', customer_path(id: current_customer.id),class: 'btn btn-outline-danger btn-block'
+br
+div class="jumbotron"
+  h3 class="display-4"
+    | みんなの ’おたより’ を
+    br
+    | たより に
+  p class="lead"
+    br
+    | 使う人の声から生まれるモノがある。
+  - if current_customer == nil && current_maker == nil
+    br
 
+    =link_to '使う人の たよりをとどける', new_customer_registration_path,class: 'btn btn-lg btn-outline-success'
+    br
+    br
+    =link_to '作るひとが たよりをあつめる', new_maker_registration_path,class: 'btn btn-lg btn-outline-warning'
+- if current_customer == nil && current_maker == nil
+  =link_to 'ちょっとのぞいてみる', makers_path,class: 'btn btn-outline-danger btn-block'
+br
+div class="row marketing"
+  div class="col-lg-6"
+    h4 星５段階評価
+    p 0.5 〜 5.0 までの星評価で評価を可視化。
+    br
+    h4 使う人達のスタイリング、経年変化情報を交換
+    p 作り手はもちろん、これから使おうとする人は、その品物が複数回使用された後の見ることは殆どありません。
+    br
+    h4 使い手同士での情報交換に
+    p 使い手のコメント欄はログインしていない人へは非公開。SNSとは異なるクローズドな場です。
 
-
-/ h1 どの作り手の作品を評価しますか？
-
-/ .mb-3
-/ table.table.table-hover
-/   thead.thead-defolt
-/     tr
-/       th= @makers.human_attribute_name(:name)
-/       th= @makers.human_attribute_name(:overview)
-/       th
-/   tbody
-/   - @makers.each do |maker|
-/     tr
-/       td= link_to maker.name, maker
-/       td= maker.overview
-/       td
-/         = link_to 'プロダクト一覧へ', home_show_path(maker_id: maker.id), class: 'btn btn-primary mr-3'
-/   end

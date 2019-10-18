@@ -5,10 +5,10 @@
     = f.text_field :name, class: 'form-control', id: 'product_name'
   .form-group
     = f.label :price
-    = f.text_field :price, class: 'form-control', id: 'product_plice'
+    = f.text_field :price, class: 'form-control', id: 'product_plice', placeholder: "税込、税抜き、円、まで入力してください"
   .form-group
     = f.label :image
-    = f.file_field :image, class: 'form-control', id: 'product_image'
+    = f.file_field :image, class: 'form-control-file', id: 'product_image'
   .form-group
     = f.label :season
     = f.text_field :season, class: 'form-control', id: 'product_season'
