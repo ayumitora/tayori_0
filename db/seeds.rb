@@ -70,7 +70,7 @@ Product.create!(
       maker_id: 1,
       name: "宝ぶくろ",
       price: 7000,
-      image: open("#{Rails.root}/db/seed_fixtures/IMG_9136.jpg"),
+      image: open("#{Rails.root}/db/seed_fixtures/takara.jpg"),
       season: "20017年ごろ"
     },
     {
