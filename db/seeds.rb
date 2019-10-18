@@ -33,7 +33,7 @@ Maker.create!(
       site_url: "https://peedrolino.official.ec",
       overview: "踊りだしたい着心地で、身体と眺めの双方善くなる福の販売",
       logo: open("#{Rails.root}/db/seed_fixtures/peedlo_logo.jpg"),
-      image: open("#{Rails.root}/db/seed_fixtures/motimoti.png"),
+      image: open("#{Rails.root}/db/seed_fixtures/motimoti.jpg"),
       ivent: "ただいま、お便りアプリを作成中です"
     },
     {
@@ -87,13 +87,13 @@ Product.create!(
       image: open("#{Rails.root}/db/seed_fixtures/tabi.jpg"),
       season: "20010年〜"
     },
-    # {
-    #   maker_id: 1,
-    #   name: "ずた袋",
-    #   price: "8000円",
-    #   image: open("#{Rails.root}/db/seed_fixtures/zuta.jpg"),
-    #   season: "20017年"
-    # },
+    {
+      maker_id: 1,
+      name: "ずた袋",
+      price: "8000円",
+      image: open("#{Rails.root}/db/seed_fixtures/zuta.jpg"),
+      season: "20017年"
+    },
     {
       maker_id: 1,
       name: "反ずぼん",
