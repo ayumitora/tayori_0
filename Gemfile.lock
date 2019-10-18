@@ -363,11 +363,8 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
-<<<<<<< HEAD
-  rspec-rails
-=======
   rails-i18n
->>>>>>> develop_1
+  rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   slim-rails
