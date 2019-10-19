@@ -8,10 +8,12 @@ class MakerCommentsController < ApplicationController
     if @maker_comment.save
       redirect_to evaluate_url(id: @maker_comment.evaluate_id), notice: "メーカーコメントを書き込みました"
     else
-      @evaluate = Evaluate.find(params[:evaluate_id])
+      @evaluate = @maker_comment.evaluate
       flash[:alert] = @maker_comment.errors.full_messages.shift
       redirect_back fallback_location: @evaluate.maker_comments
-    end      # redirect_back fallback_location: request.referrer この書き方はnoticeを付与できない
+      # @evaluate = Evaluate.find(@maker_comment.evaluate_id)
+      # render :new
+    end
   end
 
   def edit
