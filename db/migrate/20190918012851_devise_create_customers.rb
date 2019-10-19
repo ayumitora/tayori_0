@@ -4,11 +4,11 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
   def change
     create_table :customers do |t|
 
-      t.string :display_name, default: "未設定"
-      t.string :full_name, null: false, default: ""
+      t.string :display_name, default: "[未設定]"
+      t.string :full_name, null: false
       t.string :icon
       t.integer :score, default: 0
-      t.string :residence, default: "未設定"
+      t.string :residence, default: "[未設定]"
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
