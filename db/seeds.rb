@@ -91,7 +91,9 @@ Product.create!(
       maker_id: 1,
       name: "ずた袋",
       price: "8000円",
-      image: open("#{Rails.root}/db/seed_fixtures/zuta.jpg"),
+      image: nil,
+      # image: open("#{Rails.root}/db/seed_fixtures/zuta.jpg"),
+      #この画像をherokuでdb:seedするとなぜかエラーがでてしまう
       season: "20017年"
     },
     {
