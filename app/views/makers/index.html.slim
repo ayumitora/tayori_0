@@ -30,13 +30,13 @@
     thead.thead-defolt
       tr
         th= @makers.human_attribute_name(:name)
-        th= @makers.human_attribute_name(:created_at)
+        th= '登録プロダクト数'
         th
     tbody
     - @makers.each do |maker|
       tr
         td= link_to maker.name, maker
-        td= maker.created_at
+        td= maker.products.count
         td
           = link_to 'プロダクト一覧へ', products_path(maker_id: maker.id), class: 'btn btn-primary mr-3'
 

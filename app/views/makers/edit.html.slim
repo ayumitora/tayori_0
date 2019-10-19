@@ -1,29 +1,32 @@
 h1 メーカーの編集
 
-.nav.justify-content-end
-  = link_to "「#{current_maker.name}」のプロダクト一覧へ", makers_path
+- if @maker == current_maker
+  .nav.justify-content-end
+    = link_to "「#{current_maker.name}」のプロダクト一覧へ", makers_path
 
-= form_with model: @maker, local: true do |f|
-  == render 'layouts/error_messages', model: f.object
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'maker_name'
-  .form-group
-    = f.label :site_url
-    = f.text_field :site_url, class: 'form-control', id: 'maker_site_url'
-  .form-group
-    = f.label :overview
-    = f.text_area :overview, rows: 5, class: 'form-control', id: 'maker_overview'
-  .form-group
-    = f.label :logo
-    = f.file_field :logo, class: 'form-control-file', id: 'maker_logo'
-  .form-group
-    = f.label :image
-    = f.file_field :image, class: 'form-control-file', id: 'maker_image'
-  .form-group
-    = f.label :ivent
-    = f.text_area :ivent, class: 'form-control', id: 'maker_ivent'
-  =f.submit nil, class: 'btn btn-outline-info btn-block'
+  = form_with model: @maker, local: true do |f|
+    == render 'layouts/error_messages', model: f.object
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control', id: 'maker_name'
+    .form-group
+      = f.label :site_url
+      = f.text_field :site_url, class: 'form-control', id: 'maker_site_url'
+    .form-group
+      = f.label :overview
+      = f.text_area :overview, rows: 5, class: 'form-control', id: 'maker_overview'
+    .form-group
+      = f.label :logo
+      = f.file_field :logo, class: 'form-control-file', id: 'maker_logo'
+    .form-group
+      = f.label :image
+      = f.file_field :image, class: 'form-control-file', id: 'maker_image'
+    .form-group
+      = f.label :ivent
+      = f.text_area :ivent, class: 'form-control', id: 'maker_ivent'
+    =f.submit nil, class: 'btn btn-outline-info btn-block'
 
-= link_to   = link_to "#{current_maker.name} のログイン情報の編集、アカウント削除はこちら", edit_maker_registration_path
-
+  = link_to   = link_to "#{current_maker.name} のログイン情報の編集、アカウント削除はこちら", edit_maker_registration_path
+-else
+  br
+  h3 権限がありません

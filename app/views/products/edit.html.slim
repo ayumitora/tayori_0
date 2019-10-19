@@ -1,3 +1,7 @@
 h2 『#{@product.name}』の詳細を編集
 
-= render partial: 'form', locals: {product: @product}
+- if @product.maker == current_maker
+  == render partial: 'form', locals: {product: @product}
+-else
+  br
+  h3 権限がありません
