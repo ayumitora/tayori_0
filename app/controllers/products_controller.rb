@@ -42,8 +42,12 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を削除しました。"
+    if @product.maker == current_maker
+      @product.destroy
+      redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を削除しました。"
+    else
+      redirect_to products_url(maker_id: @product.maker_id), notice: "削除する権限はありません。"
+    end
   end
 
   private
