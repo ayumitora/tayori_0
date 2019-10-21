@@ -155,6 +155,14 @@ Evaluate.create!(
       rate: 3.5,
       image: open("#{Rails.root}/db/seed_fixtures/takatra_1.jpg"),
       content: "可愛いのですがあまり物は入りません。"
+    },
+    {
+      product_id: 6,
+      customer_id: 3,
+      rate: 4.5,
+      image: open("#{Rails.root}/db/seed_fixtures/asoka_sorp.jpg"),
+      content: "生まれてすぐの頃から使用していますが、
+                人より湿疹も少なくこれまで生きてこれました。おすすめです！"
     }
   ]
 )
@@ -163,9 +171,24 @@ MakerComment.create!(
   [
     {
       evaluate_id: 1,
-      maker_id: 1,
+      maker_id: 3,
       content: "ご意見ありがとうございます。小さなお守りやお薬等入れていただき、
                 お部屋に飾る等が用途になるかと思います。"
+    }
+  ]
+)
+
+CustomerComment.create!(
+  [
+    {
+      evaluate_id: 1,
+      customer_id: 3,
+      content: "僕的にはトミカが入れば十分なので大切に持ち歩きたい日などに重宝しています。"
+    },
+    {
+      evaluate_id: 2,
+      customer_id: 2,
+      content: "購入を検討しているのですが、内容量は値段相応だと思いますか？"
     }
   ]
 )
