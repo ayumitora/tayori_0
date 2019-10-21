@@ -21,7 +21,7 @@ Ruby 2.6.3 Rails 5.2.3
  コメントや画像を他のカスタマーに公開、非公開選択可能(メーカーは閲覧可能)
  画像アップロード機能
  スコア付与機能
- 平均評価や満足度を算出、表示する機能
+ 平均評価を算出、表示する機能
 
 カタログ設計
 https://docs.google.com/document/d/19AosYsUj0ooqoORsVBs2iV-PVc_YHyEf7snmWLcTWgQ/edit?usp=sharing
@@ -34,6 +34,10 @@ https://docs.google.com/spreadsheets/d/1aXbMU4ErZDFsHpSgl0FdtkNYbrCzHLHk96YkrnVt
 
 UIflow
 ![tayori_UIflow](https://user-images.githubusercontent.com/44644840/67074967-3580de00-f1c5-11e9-957e-29b620f9dded.jpg)
+
+ER図
+https://cacoo.com/diagrams/prTwBJq4FXJuneGo-9F0C4.png
+![ER図](https://user-images.githubusercontent.com/44644840/67244298-6185b300-f494-11e9-9b6d-3c4bcb26c7d6.png)
 
 
 使用予定Gem
