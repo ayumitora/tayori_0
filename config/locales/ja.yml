@@ -20,7 +20,7 @@ ja:
         name: プロダクト名
         price: 参考価格
         image: プロダクト画像
-        season: 創作期
+        season: 創作時期
         created_at: 登録日時
         updated_at: 更新日時
         evalustes_count: 評価数
