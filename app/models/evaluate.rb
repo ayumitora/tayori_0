@@ -14,8 +14,6 @@ class Evaluate < ApplicationRecord
     length: { maximum: 1000 }
 
   validates :customer_id, uniqueness: { scope: :product_id }
-
-
   private
 
   def grant_score_10

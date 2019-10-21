@@ -12,7 +12,10 @@ table.table.table-hover
       td= @evaluate.product.maker.name
     tr
       th= Product.human_attribute_name(:image)
-      td= image_tag @evaluate.product.image.url
+      -if @evaluate.product.image.url.present?
+        td= image_tag @evaluate.product.image.url
+      - else
+        td= image_tag 'no_image.jpg'
     tr
       th= Evaluate.human_attribute_name(:image)
       - if @evaluate.image.url.present?

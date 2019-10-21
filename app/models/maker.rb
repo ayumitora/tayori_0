@@ -7,14 +7,14 @@ class Maker < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :site_url,
-    presence: true,
-    on: :update,
+    # presence: true,
+    # on: :update,
     format: /\A#{URI::regexp(%w(http https))}\z/
 
-    validates :overview,
-    presence: true,
-    length: { maximum: 500 },
-    on: :update
+  validates :overview,
+    length: { maximum: 500 }
+    # presence: true,
+    # on: :update
 
 
   has_many :products, dependent: :destroy

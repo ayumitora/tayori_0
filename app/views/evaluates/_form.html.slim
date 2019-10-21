@@ -8,7 +8,10 @@ table.table.table-hover
       td= evaluate.customer.display_name
     tr
       th= Product.human_attribute_name(:image)
-      td= image_tag evaluate.product.image.url
+      - if evaluate.product.image.url.present?
+        td= image_tag evaluate.product.image.url
+      - else
+        td= image_tag 'no_image.jpg'
 
 = form_with model: evaluate, local: true do |f|
   == render 'layouts/error_messages', model: f.object

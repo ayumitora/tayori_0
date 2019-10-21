@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_023023) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", default: "", null: false
-    t.string "site_url"
+    t.string "site_url", default: "http://example.com"
     t.text "overview"
     t.string "logo"
     t.string "image"

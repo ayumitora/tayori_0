@@ -11,7 +11,7 @@ RSpec.describe Evaluate, type: :model do
       product_id: @product.id,
       customer_id: @customer.id,
       rate: 4.0,
-      image: open("#{Rails.root}/db/seed_fixtures/takatra_1.jpg"),
+      image: nil,
       content: '感想を投稿するテスト'
     )
     expect(evaluate).to be_valid
@@ -30,19 +30,18 @@ RSpec.describe Evaluate, type: :model do
 
   it '同じカスタマーで同じプロダクトを２度評価することはできない' do
     evaluate = Evaluate.new(
-      product_id: @product.id,
-      customer_id: @customer.id,
-      rate: 4.0,
+      product_id: 1,
+      customer_id: 1,
       image: open("#{Rails.root}/db/seed_fixtures/takatra_1.jpg"),
       content: '感想を投稿するテスト1'
     )
     second_evaluate = Evaluate.new(
-      product_id: @product.id,
-      customer_id: @customer.id,
+      product_id: 1,
+      customer_id: 1,
       rate: 3.0,
       image: open("#{Rails.root}/db/seed_fixtures/tabi.jpg"),
       content: '感想を投稿するテスト2'
     )
-    expect(second_evaluate).to be_valid
+    expect(second_evaluate).to be_invalid
   end
 end

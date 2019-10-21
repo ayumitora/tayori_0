@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  require 'rails_helper'
-
   before do
     @maker = FactoryBot.create(:maker)
   end
