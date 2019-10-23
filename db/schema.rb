@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_023023) do
     t.string "price"
     t.string "image"
     t.string "season"
+    t.text "overview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "maker_id"

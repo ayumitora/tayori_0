@@ -24,6 +24,7 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
         evalustes_count: 評価数
+        overview: プロダクト概要
       maker:
         id: メーカーID
         name: メーカー名

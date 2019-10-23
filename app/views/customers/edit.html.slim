@@ -20,7 +20,6 @@ h2 『#{@customer.display_name}』 の登録情報を編集
       = f.label :residence
       = f.text_field :residence, class: 'form-control', id: 'customer_residence'
     =f.submit nil, class: 'btn btn-outline-info btn-block'
-  = link_to '戻る', 'javascript:history.back()'
 -else
   br
   h3 権限がありません
