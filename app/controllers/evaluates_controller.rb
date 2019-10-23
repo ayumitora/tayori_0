@@ -42,8 +42,12 @@ class EvaluatesController < ApplicationController
   end
 
   def destroy
-    @evaluate.destroy
-    redirect_to evaluates_url(customer_id: @evaluate.customer_id), notice: "プロダクト「#{@evaluate.product.name}」を削除しました。"
+    if @evaluate.customer == current_customer
+      @evaluate.destroy
+      redirect_to evaluates_url(customer_id: @evaluate.customer_id), notice: "プロダクト「#{@evaluate.product.name}」を削除しました。"
+    else
+      redirect_to evaluates_url(customer_id: @evaluate.customer_id), notice: "削除する権限はありません。"
+    end
   end
 
 
