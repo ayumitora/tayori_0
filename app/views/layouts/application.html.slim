@@ -11,23 +11,38 @@ html
   body
     nav class="navbar navbar-expand-lg navbar-light bg-light"
       a class="navbar-brand" href="/" TAYORI
-      button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+      button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"
         span class="navbar-toggler-icon"
 
-      div class="collapse navbar-collapse" id="navbarSupportedContent"
-        ul class="navbar-nav mr-auto list-group-flush"
-          div class="nav-item active"
-            - if maker_signed_in?
-              li = link_to "作り手「#{current_maker.name}」のマイページ", maker_path(current_maker)
-              li = link_to "ログアウト", destroy_maker_session_path, method: :delete
-            - elsif customer_signed_in?
-              li = link_to "使う人「#{current_customer.display_name}」のマイページ", customer_path(current_customer)
-              li = link_to "ログアウト", destroy_customer_session_path, method: :delete
-            - else
-              li = link_to '作り手 ログイン', new_maker_session_path
-              li = link_to '作り手 新規登録', new_maker_registration_path
-              li = link_to '使う人 ログイン', new_customer_session_path
-              li = link_to '使う人 新規登録', new_customer_registration_path
+      div class="collapse navbar-collapse" id="navbarNav"
+        ul class="navbar-nav"
+          - if maker_signed_in?
+            li class="nav-item"
+              = link_to "「#{current_maker.name}」のマイページ", maker_path(current_maker)
+            li class="nav-item"
+              =link_to 'プロダクト登録', new_product_path
+            li class="nav-item"
+              =link_to 'プロダクト一覧', products_path(maker_id: current_maker.id)
+            li class="nav-item"
+              = link_to "ログアウト", destroy_maker_session_path, method: :delete
+          - elsif customer_signed_in?
+            li class="nav-item"
+              = link_to "「#{current_customer.display_name}」のマイページ", customer_path(current_customer)
+            li class="nav-item"
+              =link_to '新しい評価を登録', makers_path
+            li class="nav-item"
+              =link_to '評価したもの一覧', evaluates_path(customer_id: current_customer.id)
+            li class="nav-item"
+              = link_to "ログアウト", destroy_customer_session_path, method: :delete
+          - else
+            li class="nav-item"
+              = link_to 'メーカーログイン', new_maker_session_path
+            li class="nav-item"
+              = link_to 'カスタマー ログイン', new_customer_session_path
+            li class="nav-item"
+              = link_to '作り手(メーカー）新規登録', new_maker_registration_path
+            li class="nav-item"
+              = link_to '使う人(カスタマー）新規登録', new_customer_registration_path
 
     .container.mb-5
       = link_to '＜', 'javascript:history.back()'
@@ -40,6 +55,10 @@ html
           = flash.alert
 
       = yield
+
+      .nav.justify-content-end
+        = link_to '↑頁最上部へ', href="#"
+
 
     footer class="footer text-center bg-light"
       p &copy; AYUMI ARAI 2019
