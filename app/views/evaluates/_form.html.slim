@@ -27,4 +27,8 @@ table.table.table-hover
   .form-group
     = f.label :image
     = f.file_field :image, class: 'form-control-file', id: 'evaluate_image'
+  - if evaluate.image.url.present?
+    = image_tag evaluate.image.url
+  br
+  br
   =f.submit nil, class: 'btn btn-outline-info btn-block'

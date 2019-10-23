@@ -1,8 +1,14 @@
-h2 #{@evaluate.customer.display_name} による#{@evaluate.product.name}の評価
-
-.nav.justify-content-end
-  = link_to "#{@evaluate.customer.display_name} の評価一覧へ", evaluates_path(customer_id: @evaluate.customer_id)
+.nav.justify-content-center
+  h2 #{@evaluate.customer.display_name} による#{@evaluate.product.name}の評価
 br
+.nav.justify-content-center
+
+  - if @evaluate.customer.icon.url.present?
+    td= image_tag @evaluate.customer.icon.url, class: "rounded-circle"
+  - else
+    td= image_tag 'no_image.jpg', class: "rounded-circle"
+br
+
   - if @evaluate.customer == current_customer
     = link_to 'このレビューを編集', edit_evaluate_path(id: @evaluate.id)
 table.table.table-hover
@@ -34,6 +40,9 @@ table.table.table-hover
     tr
       th= Evaluate.human_attribute_name(:content)
       td= simple_format(h(@evaluate.content), {}, sanitize: false, wrapper_tag: "div")
+.nav.justify-content-end
+  = link_to "#{@evaluate.customer.display_name} の評価一覧へ", evaluates_path(customer_id: @evaluate.customer_id)
+br
 
 -if @maker_comments == []
   .card style=("padding: 10px; margin-bottom: 10px;")
@@ -61,6 +70,10 @@ br
   - @customer_comments.each do |customer_comment|
     .card style=("padding: 10px; margin-bottom: 10px;")
       .card-body
+        - if customer_comment.customer.icon.url.present?
+          td= image_tag customer_comment.customer.icon.url, class: "rounded-circle"
+        - else
+          td= image_tag 'no_image.jpg', class: "rounded-circle"
         .card-title
           h5 #{customer_comment.customer.display_name}からのコメント:
           p.card-text
@@ -73,8 +86,6 @@ br
             -else
               = link_to 'このカスタマーのページへ', customer_path(id: customer_comment.customer_id), class: "card-link"
             br
-
-
 
 - if customer_signed_in?
   h5 コメントを追加する:

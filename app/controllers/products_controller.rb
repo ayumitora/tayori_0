@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to products_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を更新しました。"
+      redirect_to product_url(maker_id: @product.maker_id), notice: "プロダクト「#{@product.name}」を更新しました。"
     else
       render :edit
     end

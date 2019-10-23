@@ -1,6 +1,5 @@
 h1 評価を変更する
-- if evaluate.customer == current_customer
+- if @evaluate.customer == current_customer
   == render partial: 'form', locals: {evaluate: @evaluate}
 -else
   h3 編集の権限がありません。
-  

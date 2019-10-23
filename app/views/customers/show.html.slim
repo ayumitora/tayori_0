@@ -1,4 +1,12 @@
-h2 #{@customer.display_name}の登録情報
+.nav.justify-content-center
+  h2 #{@customer.display_name}の登録情報
+.nav.justify-content-center
+
+  - if @customer.icon.url.present?
+    td= image_tag @customer.icon.url, class: "rounded-circle"
+  - else
+    td= image_tag 'no_image.jpg', class: "rounded-circle"
+br
 -if customer_signed_in?
   =link_to '新たに評価を登録する', makers_path,class: 'btn btn-outline-info btn-block'
 
@@ -13,12 +21,6 @@ table.table.table-hover
     tr
       th= Customer.human_attribute_name(:display_name)
       td= "#{@customer.display_name}  (他のユーザーにも表示する名前です）"
-    tr
-      th= Customer.human_attribute_name(:icon)
-      - if @customer.icon.url.present?
-        td= image_tag @customer.icon.url
-      - else
-        td= image_tag 'no_image.jpg'
     tr
       th= Customer.human_attribute_name(:score)
       td= @customer.score

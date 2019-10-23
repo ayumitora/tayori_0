@@ -1,5 +1,7 @@
-h2  「#{@maker.name}」のプロダクト一覧
-
+.nav.justify-content-center
+  h2  「#{@maker.name}」のプロダクト一覧
+  = image_tag @maker.logo.url
+br
 - if maker_signed_in?
   =link_to 'プロダクト新規登録', new_product_path,class: 'btn btn-outline-info btn-block'
 
@@ -10,13 +12,13 @@ table.table.table-hover
       th= @products.human_attribute_name(:name)
       th= @products.human_attribute_name(:evalustes_count)
       th
+
   tbody
   - @products.each do |product|
     tr
       td= link_to product.name, product
       / td= image_tag product.image.url
       td= product.evaluates.count
-
       td
         -if @maker == current_maker
           = link_to '編集', edit_product_path(product), class: 'btn btn-primary mr-3'

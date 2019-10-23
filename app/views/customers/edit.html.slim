@@ -11,7 +11,11 @@ h2 『#{@customer.display_name}』 の登録情報を編集
       = f.text_field :display_name, class: 'form-control', id: 'customer_display_name'
     .form-group
       = f.label :icon
-      = f.file_field :icon, class: 'form-control', id: 'customer_icon'
+      = f.file_field :icon, class: 'form-control-file', id: 'customer_icon'
+    - if @customer.icon.url.present?
+      = image_tag @customer.icon.url
+      br
+      br
     .form-group
       = f.label :residence
       = f.text_field :residence, class: 'form-control', id: 'customer_residence'

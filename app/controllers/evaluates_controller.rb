@@ -34,7 +34,7 @@ class EvaluatesController < ApplicationController
   end
 
   def update
-    if@evaluate.update(evaluate_params)
+    if @evaluate.update(evaluate_params)
       redirect_to evaluates_url(customer_id: @evaluate.customer_id), notice: "プロダクト「#{@evaluate.product.name}」の評価を更新しました。"
     else
       render :edit

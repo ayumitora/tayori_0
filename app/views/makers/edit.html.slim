@@ -18,9 +18,13 @@ h2 メーカー情報の編集
     .form-group
       = f.label :logo
       = f.file_field :logo, class: 'form-control-file', id: 'maker_logo'
+      - if @maker.logo.present?
+        = image_tag  @maker.logo.url
     .form-group
       = f.label :image
       = f.file_field :image, class: 'form-control-file', id: 'maker_image'
+      - if @maker.image.present?
+        = image_tag  @maker.image.url
     .form-group
       = f.label :ivent
       = f.text_area :ivent, class: 'form-control', id: 'maker_ivent'
