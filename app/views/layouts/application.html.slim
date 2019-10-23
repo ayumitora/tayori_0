@@ -18,7 +18,7 @@ html
         ul class="navbar-nav"
           - if maker_signed_in?
             li class="nav-item"
-              = link_to "「#{current_maker.name}」のマイページ", maker_path(current_maker)
+              = link_to "「#{current_maker.name}」マイページ", maker_path(current_maker)
             li class="nav-item"
               =link_to 'プロダクト登録', new_product_path
             li class="nav-item"
@@ -27,7 +27,7 @@ html
               = link_to "ログアウト", destroy_maker_session_path, method: :delete
           - elsif customer_signed_in?
             li class="nav-item"
-              = link_to "「#{current_customer.display_name}」のマイページ", customer_path(current_customer)
+              = link_to "「#{current_customer.display_name}」マイページ", customer_path(current_customer)
             li class="nav-item"
               =link_to '新しい評価を登録', makers_path
             li class="nav-item"
