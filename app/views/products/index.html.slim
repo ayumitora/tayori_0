@@ -1,5 +1,6 @@
 .nav.justify-content-center
   h2  「#{@maker.name}」のプロダクト一覧
+- if @maker.logo.present?
   = image_tag @maker.logo.url
 br
 - if maker_signed_in?
