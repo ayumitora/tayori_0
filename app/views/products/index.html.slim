@@ -1,7 +1,7 @@
 .nav.justify-content-center
   h2  「#{@maker.name}」のプロダクト一覧
-- if @maker.logo.present?
-  = image_tag @maker.logo.url
+  - if @maker.logo.present?
+    = image_tag @maker.logo.url
 br
 - if maker_signed_in?
   =link_to 'プロダクト新規登録', new_product_path,class: 'btn btn-outline-info btn-block'
@@ -24,7 +24,7 @@ table.table.table-hover
         -if @maker == current_maker
           = link_to '編集', edit_product_path(product), class: 'btn btn-primary mr-3'
           = link_to '削除', product, method: :delete, data: { confirm: "プロダクト「#{product.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
-        - elsif current_customer == nil && current_maker == nil
+        - elsif (current_customer == nil && current_maker == nil) || maker_signed_in?
           = link_to '詳細と評価一覧', product, class: 'btn btn-primary mr-3'
         - elsif Evaluate.where(product_id: product.id, customer_id: current_customer.id)[0]
           =link_to '評価済み', new_evaluate_path(product_id: product.id),class: 'btn btn-outline-info mr-2'

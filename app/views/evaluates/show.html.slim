@@ -66,7 +66,7 @@ br
   = render partial: 'maker_comments/form', locals: {evaluate: @evaluate, maker_comment: @maker_comment}
 br
 br
-- if customer_signed_in? || maker_signed_in?
+- if customer_signed_in? || current_maker == @maker
   - @customer_comments.each do |customer_comment|
     .card style=("padding: 10px; margin-bottom: 10px;")
       .card-body

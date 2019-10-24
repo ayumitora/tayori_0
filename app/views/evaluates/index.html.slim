@@ -1,6 +1,6 @@
 
 / h2  #{@evaluate.customer.dispray_name}が評価したプロダクト一覧
-h2  #{@customer.display_name}に評価されたプロダクト一覧
+h2  #{@customer.display_name}の評価プロダクト一覧
 - if @customer == current_customer
   =link_to '新たにプロダクトを評価する', makers_path,class: 'btn btn-outline-info btn-block'
 
@@ -8,21 +8,21 @@ h2  #{@customer.display_name}に評価されたプロダクト一覧
 table.table.table-hover
   thead.thead-defolt
     tr
+      th= Maker.human_attribute_name(:name)
       th= Product.human_attribute_name(:name)
-      th= Product.human_attribute_name(:created_at)
       th= Evaluate.human_attribute_name(:rate)
-
+      th= "コメント数"
       th
   tbody
   - @evaluates.each do |evaluate|
     tr
+      td= link_to evaluate.product.maker.name, evaluate
       td= link_to evaluate.product.name, evaluate
-      td= evaluate.product.created_at
       td
         = evaluate.rate
         | <div id="star-#{evaluate.id}">
         == render 'star_js', evaluate: evaluate, score_name: "", readonly_flug: true, tag: "#star-#{evaluate.id}"
-
+      td= evaluate.customer_comments.count
       td
         - if evaluate.customer == current_customer
           = link_to '編集', edit_evaluate_path(evaluate), class: 'btn btn-primary mr-3'

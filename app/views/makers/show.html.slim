@@ -31,7 +31,7 @@ table.table.table-hover
         td= image_tag 'no_image.jpg'
     tr
       th= Maker.human_attribute_name(:ivent)
-      td= @maker.ivent
+      td= simple_format(h(@maker.ivent), {}, sanitize: false, wrapper_tag: "div")
 
 .nav.justify-content-end
   - if current_maker == @maker

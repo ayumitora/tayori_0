@@ -2,7 +2,10 @@
   == render 'layouts/error_messages', model: f.object
   .form-group
     = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'product_name', placeholder: '必要に応じて色や素材も入力し、顧客がプロダクトを特定しやすいよう入力してください。'
+    = f.text_field :name, class: 'form-control', id: 'product_name', placeholder: '作品名、アイテム名を完結に入力してください。'
+  .form-group
+    = f.label :overview
+    = f.text_area :overview, class: 'form-control', id: 'product_overview', placeholder: '必要に応じて色や素材も入力し、顧客がプロダクトを特定しやすいよう入力してください。'
   .form-group
     = f.label :price
     = f.text_field :price, class: 'form-control', id: 'product_plice', placeholder: '単位(円など）時価、3000~4000円、など自由に入力できます。'

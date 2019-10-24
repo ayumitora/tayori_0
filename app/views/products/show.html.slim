@@ -7,7 +7,7 @@ table.table.table-hover
       td= @product.price
     tr
       th= Product.human_attribute_name(:overview)
-      td= @product.overview
+      td= simple_format(h(@product.overview), {}, sanitize: false, wrapper_tag: "div")
     tr
       th= Product.human_attribute_name(:image)
       - if @product.image.url.present?
@@ -32,6 +32,8 @@ table.table.table-hover
   -if current_maker == @product.maker
     = link_to '編集', edit_product_path, class: 'btn btn-primary mr-3'
     = link_to '削除', @product, method: :delete, data: { confirm: "プロダクト「#{@product.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+  - elsif (current_customer == nil && current_maker == nil) || maker_signed_in?
+      button class="btn btn-primary btn-block disabled" 評価を登録するにはカスタマーログインが必要です
   - elsif Evaluate.where(product_id: @product.id, customer_id: current_customer.id)[0]
     =link_to '評価済み', new_evaluate_path(product_id: @product.id),class: 'btn btn-outline-info mr-2'
   - else
@@ -45,16 +47,17 @@ h2  このプロダクトの評価一覧
 table.table.table-hover
   thead.thead-defolt
     tr
-      -if maker_signed_in?
+      -if current_maker == @product.maker
         th= Customer.human_attribute_name(:full_name)
       th= Customer.human_attribute_name(:display_name)
       th= Product.human_attribute_name(:created_at)
       th= Evaluate.human_attribute_name(:rate)
-
+      th= "コメント数"
+      th
   tbody
   - @evaluates.each do |evaluate|
     tr
-      -if maker_signed_in?
+      -if current_maker == @product.maker
         td= evaluate.customer.full_name
       td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
             / td= link_to evaluate.customer.display_name, customer_path(id: evaluate.customer_id)
@@ -63,10 +66,8 @@ table.table.table-hover
         = evaluate.rate
         | <div id="star-#{evaluate.id}">
         == render 'star_js', evaluate: evaluate, score_name: "", readonly_flug: true, tag: "#star-#{evaluate.id}", evaluate_rate: evaluate.rate
+      td= evaluate.customer_comments.count
       td
         = link_to '評価詳細へ', evaluate_path(evaluate), class: 'btn btn-primary mr-3'
   end
-
-.nav.justify-content-end
-  = link_to '＜', 'javascript:history.back()'
 
