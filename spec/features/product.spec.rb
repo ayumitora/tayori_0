@@ -17,7 +17,7 @@ describe 'product', type: :system do
       visit new_product_path
       fill_in 'プロダクト名', with: 'プロダクト２'
       fill_in 'product_plice', with: '8000円（税込）'
-      fill_in '創作期', with: '2019年SS'
+      fill_in '創作時期', with: '2019年SS'
       click_on '登録する'
       expect(page).to have_content 'プロダクト「プロダクト２」を登録しました。'
       expect(page).to have_content 'プロダクト２'
@@ -27,7 +27,7 @@ describe 'product', type: :system do
       visit new_product_path
       fill_in 'プロダクト名', with: ''
       fill_in 'product_plice', with: 'シーズンによって異なる'
-      fill_in '創作期', with: '2018/SS'
+      fill_in '創作時期', with: '2018/SS'
       click_on '登録する'
       expect(page).to have_content 'プロダクト名を入力してください'
     end

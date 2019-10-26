@@ -26,7 +26,7 @@ describe 'maker_comment', type: :system do
       click_on '評価詳細へ'
       fill_in 'maker_comment[content]', with: ''
       click_on 'コメント追加'
-      expect(page).to have_content 'メーカーコメントを書き込みました'
+      expect(page).to have_content 'メーカーからのコメントを入力してください'
     end
   end
 end
