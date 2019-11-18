@@ -8,6 +8,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://kit.fontawesome.com/18f0accedf.js" crossorigin="anonymous"
   body
     nav class="navbar navbar-expand-lg navbar-light bg-light"
       a class="navbar-brand" href="/" TAYORI
@@ -45,7 +46,8 @@ html
               = link_to '使う人(カスタマー）新規登録', new_customer_registration_path
 
     .container.mb-5
-      = link_to '＜', 'javascript:history.back()'
+      .op
+        = link_to '＜', 'javascript:history.back()'
       - if flash.notice.present?
         .alert.alert-success
           = flash.notice
@@ -56,7 +58,7 @@ html
 
       = yield
 
-      .nav.justify-content-end
+      .nav.justify-content-end.op
         = link_to '△', href="#"
 
 

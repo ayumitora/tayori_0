@@ -33,10 +33,22 @@ body{
   font-weight: bold;
 }
 
+.op{
+  font-size: 44px;
+}
+
 a {
-    color:#CC0000;
+  color:#CC0000;
 }
 
 footer{
-    margin-top: auto;
+  margin-top: auto;
+}
+
+.table-dark{
+  border: 1px solid #aaa;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 50px;
+  overflow: hidden;
 }
