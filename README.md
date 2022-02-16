@@ -52,5 +52,5 @@ jquery-rails<br>
 rspec-rails<br>
 slim-rails<br>
 
-## 星５段階評価プラグイン
+## 星５段階評価表示プラグイン
 jQuery Raty
